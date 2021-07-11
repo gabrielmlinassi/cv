@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+  body {
+    @apply font-sans font-normal;
+  }
+
+  h1 {
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .doc {
+    height: 1056px;
+    overflow: hidden;
+  }
+
+  .doc-side {
+    flex: 0 0 250px;
+  }
+}

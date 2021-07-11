@@ -221,8 +221,8 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
                 design to implementation and delivery.
               </li>
               <li className="text-gray-700 text-sm leading-normal">
-                Developed new software functionalities, ensuring that clients'
-                vision and requirements were met.
+                {`Developed new software functionalities, ensuring that clients\'
+                vision and requirements were met.`}
               </li>
             </ul>
           </div>
@@ -272,3 +272,5 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
     </div>
   );
 });
+
+CV.displayName = "Home";

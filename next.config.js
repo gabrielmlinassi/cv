@@ -1,7 +1,7 @@
-const base =
-  process.env.NODE_ENV === "production"
-    ? "https://gabrielmlinassi.com"
-    : "http://localhost:4000";
+// const base =
+//   process.env.NODE_ENV === "production"
+//     ? "https://gabrielmlinassi.com"
+//     : "http://localhost:4000";
 
 module.exports = {
   images: {
@@ -11,7 +11,7 @@ module.exports = {
     return [
       {
         source: "/gallery",
-        destination: `${base}/gallery`,
+        destination: `https://www.google.com`,
         permanent: true,
       },
     ];

@@ -7,14 +7,13 @@ module.exports = {
   images: {
     domains: ["res.cloudinary.com"],
   },
-  async rewrites() {
-    return {
-      fallback: [
-        {
-          source: "/gallery",
-          destination: `${base}/gallery`,
-        },
-      ],
-    };
+  async redirects() {
+    return [
+      {
+        source: "/gallery",
+        destination: `${base}/gallery`,
+        permanent: true,
+      },
+    ];
   },
 };

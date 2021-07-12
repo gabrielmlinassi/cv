@@ -36,7 +36,7 @@ export default function Gallery({ pictures }: IGallery) {
 }
 
 export async function getStaticProps() {
-  const pictures = await getPictures("test");
+  const pictures = await getPictures("large-images");
 
   return {
     props: { pictures },

@@ -53,22 +53,22 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="py-4 px-4">
           <div>
             <h4 className="text-white font-bold">Address</h4>
-            <p className="text-white">
+            <p className="text-white text-sm">
               <div>Frederico Westphalen,</div>
               <div>98400-000, RS, Brazil</div>
             </p>
           </div>
           <div className="mt-3">
             <h4 className="text-white font-bold">Phone</h4>
-            <p className="text-white">(55) 9 9932-5639</p>
+            <p className="text-white text-sm">(55) 9 9932-5639</p>
           </div>
           <div className="mt-3">
             <h4 className="text-white font-bold">Email</h4>
-            <p className="text-white">gabrielm.linassi@gmail.com</p>
+            <p className="text-white text-sm">gabrielm.linassi@gmail.com</p>
           </div>
           <div className="mt-3">
             <h4 className="text-white font-bold">WWW</h4>
-            <p className="text-white">https://gabrielmlinassi.com</p>
+            <p className="text-white text-sm">https://gabrielmlinassi.com</p>
           </div>
         </div>
         {/* Skills */}

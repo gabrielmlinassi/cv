@@ -3,7 +3,7 @@ module.exports = {
     return [
       {
         source: "/gallery",
-        destination: `https://www.google.com`,
+        destination: `https://www.gallery.gabrielmlinassi.com`,
         permanent: true,
       },
     ];

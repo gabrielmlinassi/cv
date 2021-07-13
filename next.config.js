@@ -3,7 +3,10 @@ module.exports = {
     return [
       {
         source: "/gallery",
-        destination: `https://gallery.gabrielmlinassi.com`,
+        destination:
+          process.env.NODE_ENV === "production"
+            ? `https://gallery.gabrielmlinassi.com`
+            : `http://localhost:4000`,
         permanent: true,
       },
     ];

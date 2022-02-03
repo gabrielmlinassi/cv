@@ -18,13 +18,13 @@ export default function Home() {
 
   return (
     <div className="bg-gray-100">
-      <div className="max-w-4xl mx-auto p-10 space-y-4">
-        <button
+      <div className="max-w-4xl mx-auto p-0 md:p-10 space-y-4">
+        {/* <button
           className="px-4 py-2 bg-yellow-300 hover:bg-yellow-400 shadow rounded"
           onClick={handlePrint}
         >
           Print CV
-        </button>
+        </button> */}
         {/* mdx */}
         <div className="shadow">
           <CV ref={cvRef} />
@@ -36,7 +36,7 @@ export default function Home() {
 
 const CV = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div ref={ref} className="flex mx-auto doc">
+    <div ref={ref} className="flex flex-col md:flex-row mx-auto doc">
       {/* Left panel */}
       <div className="doc-side bg-blue-500">
         {/* Name */}

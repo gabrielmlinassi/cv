@@ -19,8 +19,11 @@
 
 @layer components {
   .doc {
-    height: 1056px;
     overflow: hidden;
+
+    @media (min-width: 768px) {
+      height: 1056px;
+    }
   }
 
   .doc-side {

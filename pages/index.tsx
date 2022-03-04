@@ -17,15 +17,31 @@ export default function Home() {
   });
 
   return (
-    <div className="bg-gray-100">
-      <div className="max-w-4xl mx-auto p-0 md:p-10 space-y-4">
-        {/* <button
-          className="px-4 py-2 bg-yellow-300 hover:bg-yellow-400 shadow rounded"
-          onClick={handlePrint}
-        >
-          Print CV
-        </button> */}
-        {/* mdx */}
+    <div className="min-h-screen bg-gray-100">
+      <nav className="bg-white">
+        <div className="flex items-center justify-end h-16 px-2 max-w-4xl mx-auto w-full">
+          <button
+            className="flex items-center space-x-2 px-4 py-2 bg-yellow-300 hover:bg-yellow-400 transition-colors duration-200 rounded"
+            onClick={handlePrint}
+          >
+            <span className="text-white font-bold">Print CV</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-white"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+      {/*  */}
+      <div className="max-w-4xl mx-auto p-0 py-4 px-2 md:py-10 space-y-4">
         <div className="shadow">
           <CV ref={cvRef} />
         </div>
@@ -36,7 +52,7 @@ export default function Home() {
 
 const CV = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div ref={ref} className="flex flex-col md:flex-row mx-auto doc">
+    <div ref={ref} className="doc">
       {/* Left panel */}
       <div className="doc-side bg-blue-500">
         {/* Name */}

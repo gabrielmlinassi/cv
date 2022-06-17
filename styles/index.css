@@ -9,9 +9,6 @@
     @apply font-sans font-normal;
   }
 
-  h1 {
-  }
-
   p {
     @apply leading-relaxed;
   }
@@ -22,12 +19,16 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+  }
 
-    @media (min-width: 640px) {
+  @media (min-width: 640px) {
+    .doc {
       flex-direction: row;
     }
+  }
 
-    @media (min-width: 768px) {
+  @media (min-width: 768px) {
+    .doc {
       height: 1056px;
     }
   }
@@ -41,6 +42,10 @@
       display: flex;
       flex-direction: row;
       height: 100%;
+    }
+
+    .doc-side {
+      @apply h-screen;
     }
   }
 }

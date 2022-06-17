@@ -19,12 +19,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-white">
-        <div className="flex items-center justify-end h-16 px-2 max-w-4xl mx-auto w-full">
+        <div className="mx-auto flex h-16 w-full max-w-4xl items-center justify-end px-2">
           <button
-            className="flex items-center space-x-2 px-4 py-2 bg-yellow-300 hover:bg-yellow-400 transition-colors duration-200 rounded"
+            className="flex items-center space-x-2 rounded bg-yellow-300 px-4 py-2 transition-colors duration-200 hover:bg-yellow-400"
             onClick={handlePrint}
           >
-            <span className="text-white font-bold">Print CV</span>
+            <span className="font-bold text-white">Print CV</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 text-white"
@@ -41,7 +41,7 @@ export default function Home() {
         </div>
       </nav>
       {/*  */}
-      <div className="max-w-4xl mx-auto p-0 py-4 px-2 md:py-10 space-y-4">
+      <div className="mx-auto max-w-4xl space-y-4 p-0 py-4 px-2 md:py-10">
         <div className="shadow">
           <CV ref={cvRef} />
         </div>
@@ -57,43 +57,43 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
       <div className="doc-side bg-blue-500">
         {/* Name */}
         <div className="px-4 py-6 pb-2">
-          <h1 className="text-white text-4xl font-bold">Gabriel M. Linassi</h1>
+          <h1 className="text-4xl font-bold text-white">Gabriel M. Linassi</h1>
           <div className="mt-1">
-            <h2 className="text-white text-xl">Software Engieer</h2>
+            <h2 className="text-xl text-white">Software Engieer</h2>
           </div>
         </div>
         {/* Contact */}
-        <div className="mt-4 px-4 py-1 bg-blue-400">
-          <h3 className="text-white font-bold text-base">Contact</h3>
+        <div className="mt-4 bg-blue-400 px-4 py-1">
+          <h3 className="text-base font-bold text-white">Contact</h3>
         </div>
         <div className="py-4 px-4">
           <div>
-            <h4 className="text-white font-bold">Address</h4>
-            <p className="text-white text-sm">
-              <div>RS, Brazil</div>
+            <h4 className="font-bold text-white">Address</h4>
+            <p className="text-sm text-white">
+              <span>RS, Brazil</span>
             </p>
           </div>
           <div className="mt-3">
-            <h4 className="text-white font-bold">Email</h4>
-            <p className="text-white text-sm">gabrielm.linassi@gmail.com</p>
+            <h4 className="font-bold text-white">Email</h4>
+            <p className="text-sm text-white">gabrielm.linassi@gmail.com</p>
           </div>
           <div className="mt-3">
-            <h4 className="text-white font-bold">WWW</h4>
-            <p className="text-white text-sm">https://gabrielmlinassi.com</p>
+            <h4 className="font-bold text-white">WWW</h4>
+            <p className="text-sm text-white">https://gabrielmlinassi.com</p>
           </div>
         </div>
         {/* Skills */}
-        <div className="mt-4 px-4 py-1 bg-blue-400">
-          <h3 className="text-white font-bold text-base">Skills</h3>
+        <div className="mt-4 bg-blue-400 px-4 py-1">
+          <h3 className="text-base font-bold text-white">Skills</h3>
         </div>
         <div className="py-4 px-4">
           <div>
             <span className="text-xs text-white">React.js / Next.js</span>
             <div className="relative">
-              <div className="absolute w-full h-2 bg-blue-400"></div>
-              <div className="absolute w-full h-2 bg-white"></div>
+              <div className="absolute h-2 w-full bg-blue-400"></div>
+              <div className="absolute h-2 w-full bg-white"></div>
             </div>
-            <span className="inline-block w-full mt-3 text-xs text-right text-white">
+            <span className="mt-3 inline-block w-full text-right text-xs text-white">
               Excelent
             </span>
           </div>
@@ -102,20 +102,20 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
               HTML / CSS / CSS-in-JS / UI-UX
             </span>
             <div className="relative">
-              <div className="absolute w-full h-2 bg-blue-400"></div>
-              <div className="absolute w-full h-2 bg-white"></div>
+              <div className="absolute h-2 w-full bg-blue-400"></div>
+              <div className="absolute h-2 w-full bg-white"></div>
             </div>
-            <span className="inline-block w-full mt-3 text-xs text-right text-white">
+            <span className="mt-3 inline-block w-full text-right text-xs text-white">
               Excelent
             </span>
           </div>
           <div>
             <span className="text-xs text-white">JavaScript / TypeScript</span>
             <div className="relative">
-              <div className="absolute w-full h-2 bg-blue-400"></div>
-              <div className="absolute w-5/6 h-2 bg-white"></div>
+              <div className="absolute h-2 w-full bg-blue-400"></div>
+              <div className="absolute h-2 w-5/6 bg-white"></div>
             </div>
-            <span className="inline-block w-full mt-3 text-xs text-right text-white">
+            <span className="mt-3 inline-block w-full text-right text-xs text-white">
               Very Good
             </span>
           </div>
@@ -124,53 +124,53 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
               Node.js / Express / Nest.js
             </span>
             <div className="relative">
-              <div className="absolute w-full h-2 bg-blue-400"></div>
-              <div className="absolute w-5/6 h-2 bg-white"></div>
+              <div className="absolute h-2 w-full bg-blue-400"></div>
+              <div className="absolute h-2 w-5/6 bg-white"></div>
             </div>
-            <span className="inline-block w-full mt-3 text-xs text-right text-white">
+            <span className="mt-3 inline-block w-full text-right text-xs text-white">
               Very Good
             </span>
           </div>
           <div>
             <span className="text-xs text-white">React Native</span>
             <div className="relative">
-              <div className="absolute w-full h-2 bg-blue-400"></div>
-              <div className="absolute w-1/4 h-2 bg-white"></div>
+              <div className="absolute h-2 w-full bg-blue-400"></div>
+              <div className="absolute h-2 w-1/4 bg-white"></div>
             </div>
-            <span className="inline-block w-full mt-3 text-xs text-right text-white">
+            <span className="mt-3 inline-block w-full text-right text-xs text-white">
               Beginner
             </span>
           </div>
         </div>
         {/* Languages */}
-        <div className="mt-4 px-4 py-1 bg-blue-400">
-          <h3 className="text-white font-bold text-base">Languages</h3>
+        <div className="mt-4 bg-blue-400 px-4 py-1">
+          <h3 className="text-base font-bold text-white">Languages</h3>
         </div>
         <div className="py-4 px-4">
           <div>
             <span className="text-xs text-white">Portuguese</span>
             <div className="relative">
-              <div className="absolute w-full h-2 bg-blue-400"></div>
-              <div className="absolute w-full h-2 bg-white"></div>
+              <div className="absolute h-2 w-full bg-blue-400"></div>
+              <div className="absolute h-2 w-full bg-white"></div>
             </div>
-            <span className="inline-block w-full mt-3 text-xs text-right text-white">
+            <span className="mt-3 inline-block w-full text-right text-xs text-white">
               Excelent
             </span>
           </div>
           <div>
             <span className="text-xs text-white">English</span>
             <div className="relative">
-              <div className="absolute w-full h-2 bg-blue-400"></div>
-              <div className="absolute w-5/6 h-2 bg-white"></div>
+              <div className="absolute h-2 w-full bg-blue-400"></div>
+              <div className="absolute h-2 w-5/6 bg-white"></div>
             </div>
-            <span className="inline-block w-full mt-3 text-xs text-right text-white">
+            <span className="mt-3 inline-block w-full text-right text-xs text-white">
               Very Good
             </span>
           </div>
         </div>
       </div>
       {/* Right panel */}
-      <div className="p-6 bg-white">
+      <div className="bg-white p-6">
         <p className="text-sm leading-relaxed text-gray-700 line-clamp-5">
           Ambitious Full-Stack Software Engineer with over 4 years of experience
           brings enthusiasm and detailed understanding of Web Stack to planning,
@@ -179,10 +179,10 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
           Nextjs, TypeScript, Node and Express.
         </p>
         {/* Work history */}
-        <div className="mt-4 py-1 border-t-2 border-b-2 border-gray-100">
-          <h3 className="font-bold text-lg text-blue-500">Work History</h3>
+        <div className="mt-4 border-t-2 border-b-2 border-gray-100 py-1">
+          <h3 className="text-lg font-bold text-blue-500">Work History</h3>
         </div>
-        <div className="grid grid-cols-4 gap-y-2 mt-4">
+        <div className="mt-4 grid grid-cols-4 gap-y-2">
           {/* Work #1 */}
           <div className="col-span-1 text-sm text-gray-700">
             <div>2019-09 - </div>
@@ -192,11 +192,11 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
             <h4 className="text-lg font-bold text-gray-800">
               Full-Stack Engineer
             </h4>
-            <p className="italic text-gray-700 text-sm">
+            <p className="text-sm italic text-gray-700">
               UpWork, Remote, US (mainly)
             </p>
-            <ul className="list-disc ml-4">
-              <li className="text-gray-700 text-sm leading-normal">
+            <ul className="ml-4 list-disc">
+              <li className="text-sm leading-normal text-gray-700">
                 Collaborated on multiple projects from landing pages to robust
                 systems with authentication, payment integration, and complex
                 state modeling
@@ -212,19 +212,19 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
             <h4 className="text-lg font-bold text-gray-800">
               Full-Stack Engineer
             </h4>
-            <p className="italic text-gray-700 text-sm">
+            <p className="text-sm italic text-gray-700">
               ThisDotSoftware, Remote, US
             </p>
-            <ul className="list-disc ml-4">
-              <li className="text-gray-700 text-sm leading-normal">
+            <ul className="ml-4 list-disc">
+              <li className="text-sm leading-normal text-gray-700">
                 Developed multiple landing pages, blogs and collaborated with
                 other teams to build complex apps
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 Join a team to develop a medical management software for
                 managing the operations of a clinic
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 Collaborated to develop a video-focused social networking to
                 share your favorite places
               </li>
@@ -239,24 +239,24 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
             <h4 className="text-lg font-bold text-gray-800">
               Full Stack Engineer
             </h4>
-            <p className="italic text-gray-700 text-sm">
+            <p className="text-sm italic text-gray-700">
               Prevedello Sistems, RS, Brazil
             </p>
-            <ul className="list-disc ml-4">
-              <li className="text-gray-700 text-sm leading-normal">
+            <ul className="ml-4 list-disc">
+              <li className="text-sm leading-normal text-gray-700">
                 Maintenance and development of new features
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 Model and perform database maintenance
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 Integration with external APIs (warehouse stock management,
                 e-commerce, etc)
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 Testing and QA routines
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 System migration scripts
               </li>
             </ul>
@@ -270,17 +270,17 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
             <h4 className="text-lg font-bold text-gray-800">
               IT Support Analyst
             </h4>
-            <p className="italic text-gray-700 text-sm">
+            <p className="text-sm italic text-gray-700">
               Prevedello Sistems, RS, Brazil
             </p>
-            <ul className="list-disc ml-4">
-              <li className="text-gray-700 text-sm leading-normal">
+            <ul className="ml-4 list-disc">
+              <li className="text-sm leading-normal text-gray-700">
                 Evaluate user problems
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 Identify potential sales and cross-selling opportunities
               </li>
-              <li className="text-gray-700 text-sm leading-normal">
+              <li className="text-sm leading-normal text-gray-700">
                 Respond to support requests and patiently walk individuals
                 through basic troubleshooting tasks
               </li>
@@ -288,17 +288,17 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
           </div>
         </div>
         {/* Education history */}
-        <div className="mt-4 py-1 border-t-2 border-b-2 border-gray-100">
-          <h3 className="font-bold text-lg text-blue-500">Education</h3>
+        <div className="mt-4 border-t-2 border-b-2 border-gray-100 py-1">
+          <h3 className="text-lg font-bold text-blue-500">Education</h3>
         </div>
-        <div className="grid grid-cols-4 mt-4">
+        <div className="mt-4 grid grid-cols-4">
           <div className="col-span-1 text-sm text-gray-700">
             <div>2014-06 - </div>
             <div>2017-05</div>
           </div>
           <div className="col-span-3">
             <h4 className="text-lg font-bold">Bachelor of Computer Science</h4>
-            <p className="italic text-gray-700 text-sm">
+            <p className="text-sm italic text-gray-700">
               URI - Frederico Westphalen, RS, Brazil
             </p>
           </div>

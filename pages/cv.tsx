@@ -163,7 +163,7 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
             <ul className="ml-4 list-disc">
               <li className="text-sm leading-normal text-gray-700">
                 Worked along with the team in the maintenance and development of
-                new features for the company's ERP (Enterprise resource
+                new features for the company&apos;s ERP (Enterprise resource
                 planning) and database modeling
               </li>
               <li className="text-sm leading-normal text-gray-700">

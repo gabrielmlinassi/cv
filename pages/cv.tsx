@@ -9,6 +9,10 @@
 
 import { forwardRef, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import { PrinterIcon } from "@heroicons/react/solid";
+import SkillsSection from "@components/cv/Skills";
+import { SKILLS } from "data/Skills";
+import { LANGUAGES } from "data/Languages";
 
 export default function Home() {
   const cvRef = useRef<HTMLDivElement>(null);
@@ -18,29 +22,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white">
+      <nav className="border-b bg-white">
         <div className="mx-auto flex h-16 w-full max-w-4xl items-center justify-end px-2">
           <button
-            className="flex items-center space-x-2 rounded bg-yellow-300 px-4 py-2 transition-colors duration-200 hover:bg-yellow-400"
+            className="flex items-center space-x-2 rounded bg-blue-500 py-2 px-4 font-bold text-white transition-colors duration-200 hover:bg-blue-600"
             onClick={handlePrint}
           >
-            <span className="font-bold text-white">Print CV</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-white"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <span>Print CV</span>
+            <PrinterIcon className="h-5 w-5" />
           </button>
         </div>
       </nav>
-      {/*  */}
+
       <div className="mx-auto max-w-4xl space-y-4 p-0 py-4 px-2 md:py-10">
         <div className="shadow">
           <CV ref={cvRef} />
@@ -53,7 +46,6 @@ export default function Home() {
 const CV = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div ref={ref} className="doc">
-      {/* Left panel */}
       <div className="doc-side bg-blue-500">
         {/* Name */}
         <div className="px-4 py-6 pb-2">
@@ -79,104 +71,30 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
           </div>
           <div className="mt-3">
             <h4 className="font-bold text-white">WWW</h4>
-            <p className="text-sm text-white">https://gabrielmlinassi.com</p>
+            <p className="text-sm text-white">gabrielmlinassi.com</p>
+            <p className="text-sm text-white">github.com/gabrielmlinassi</p>
+            <p className="text-sm text-white">
+              linkedin.com/in/gabrielmlinassi
+            </p>
           </div>
         </div>
-        {/* Skills */}
         <div className="mt-4 bg-blue-400 px-4 py-1">
           <h3 className="text-base font-bold text-white">Skills</h3>
         </div>
-        <div className="py-4 px-4">
-          <div>
-            <span className="text-xs text-white">React.js / Next.js</span>
-            <div className="relative">
-              <div className="absolute h-2 w-full bg-blue-400"></div>
-              <div className="absolute h-2 w-full bg-white"></div>
-            </div>
-            <span className="mt-3 inline-block w-full text-right text-xs text-white">
-              Excelent
-            </span>
-          </div>
-          <div>
-            <span className="text-xs text-white">
-              HTML / CSS / CSS-in-JS / UI-UX
-            </span>
-            <div className="relative">
-              <div className="absolute h-2 w-full bg-blue-400"></div>
-              <div className="absolute h-2 w-full bg-white"></div>
-            </div>
-            <span className="mt-3 inline-block w-full text-right text-xs text-white">
-              Excelent
-            </span>
-          </div>
-          <div>
-            <span className="text-xs text-white">JavaScript / TypeScript</span>
-            <div className="relative">
-              <div className="absolute h-2 w-full bg-blue-400"></div>
-              <div className="absolute h-2 w-5/6 bg-white"></div>
-            </div>
-            <span className="mt-3 inline-block w-full text-right text-xs text-white">
-              Very Good
-            </span>
-          </div>
-          <div>
-            <span className="text-xs text-white">
-              Node.js / Express / Nest.js
-            </span>
-            <div className="relative">
-              <div className="absolute h-2 w-full bg-blue-400"></div>
-              <div className="absolute h-2 w-5/6 bg-white"></div>
-            </div>
-            <span className="mt-3 inline-block w-full text-right text-xs text-white">
-              Very Good
-            </span>
-          </div>
-          <div>
-            <span className="text-xs text-white">React Native</span>
-            <div className="relative">
-              <div className="absolute h-2 w-full bg-blue-400"></div>
-              <div className="absolute h-2 w-1/4 bg-white"></div>
-            </div>
-            <span className="mt-3 inline-block w-full text-right text-xs text-white">
-              Beginner
-            </span>
-          </div>
-        </div>
-        {/* Languages */}
+        <SkillsSection skills={SKILLS} />
         <div className="mt-4 bg-blue-400 px-4 py-1">
           <h3 className="text-base font-bold text-white">Languages</h3>
         </div>
-        <div className="py-4 px-4">
-          <div>
-            <span className="text-xs text-white">Portuguese</span>
-            <div className="relative">
-              <div className="absolute h-2 w-full bg-blue-400"></div>
-              <div className="absolute h-2 w-full bg-white"></div>
-            </div>
-            <span className="mt-3 inline-block w-full text-right text-xs text-white">
-              Excelent
-            </span>
-          </div>
-          <div>
-            <span className="text-xs text-white">English</span>
-            <div className="relative">
-              <div className="absolute h-2 w-full bg-blue-400"></div>
-              <div className="absolute h-2 w-5/6 bg-white"></div>
-            </div>
-            <span className="mt-3 inline-block w-full text-right text-xs text-white">
-              Very Good
-            </span>
-          </div>
-        </div>
+        <SkillsSection skills={LANGUAGES} />
       </div>
-      {/* Right panel */}
+
       <div className="bg-white p-6">
         <p className="text-sm leading-relaxed text-gray-700 line-clamp-5">
-          Ambitious Full-Stack Software Engineer with over 4 years of experience
-          brings enthusiasm and detailed understanding of Web Stack to planning,
-          development and maintenance of Web Apps. Develop modern and responsive
-          interfaces for a wide range of businesses. Excellent grasp of React,
-          Nextjs, TypeScript, Node and Express.
+          Front-End Engineer with 5 years of experience with detailed
+          understanding in developing modern and responsive interfaces for a
+          wide range of businesses. Excellent grasp of React, Nextjs, TS, Redux,
+          Best Practices, Testing, REST and GraphQL. Also starting to get more
+          familiarized with ReactNative and Python
         </p>
         {/* Work history */}
         <div className="mt-4 border-t-2 border-b-2 border-gray-100 py-1">
@@ -185,104 +103,92 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="mt-4 grid grid-cols-4 gap-y-2">
           {/* Work #1 */}
           <div className="col-span-1 text-sm text-gray-700">
-            <div>2019-09 - </div>
-            <div>Current</div>
+            <div>2019-07 - </div>
+            <div>Present</div>
+            <div className="mt-1 text-xs text-gray-500">3yrs</div>
           </div>
           <div className="col-span-3">
             <h4 className="text-lg font-bold text-gray-800">
-              Full-Stack Engineer
+              Front-End Engineer
             </h4>
             <p className="text-sm italic text-gray-700">
-              UpWork, Remote, US (mainly)
+              UpWork, Freelancer, Remote
             </p>
             <ul className="ml-4 list-disc">
               <li className="text-sm leading-normal text-gray-700">
-                Collaborated on multiple projects from landing pages to robust
-                systems with authentication, payment integration, and complex
-                state modeling
+                Already collaborated on multiple projects ranging from
+                responsive landing page creation to robust systems with
+                authentication, payment integration, and complex state modeling
               </li>
             </ul>
           </div>
           {/* Work #1 */}
           <div className="col-span-1 text-sm text-gray-700">
-            <div>2019-09 - </div>
-            <div>Current</div>
+            <div>2020-04 - </div>
+            <div>2022-05</div>
+            <div className="mt-1 text-xs text-gray-500">2yrs 2 mos</div>
           </div>
           <div className="col-span-3">
             <h4 className="text-lg font-bold text-gray-800">
-              Full-Stack Engineer
+              Front-End JavaScript Engineer
             </h4>
             <p className="text-sm italic text-gray-700">
-              ThisDotSoftware, Remote, US
+              SweetRush Inc. Remote, US
             </p>
             <ul className="ml-4 list-disc">
               <li className="text-sm leading-normal text-gray-700">
-                Developed multiple landing pages, blogs and collaborated with
-                other teams to build complex apps
+                Involved in the development of various multi-page sites, and
+                landing pages for small and mid-sized businesses. Worked with
+                React, Next.js, HubSpot, WordPress and Shopify
               </li>
               <li className="text-sm leading-normal text-gray-700">
-                Join a team to develop a medical management software for
-                managing the operations of a clinic
-              </li>
-              <li className="text-sm leading-normal text-gray-700">
-                Collaborated to develop a video-focused social networking to
-                share your favorite places
+                Also worked as a in the development of a health care web app
+                with offline capability and complex architecture
               </li>
             </ul>
           </div>
           {/* Work #2 */}
           <div className="col-span-1 text-sm text-gray-700">
-            <div>2017-06 - </div>
-            <div>2018-10</div>
+            <div>2017-04 - </div>
+            <div>2019-07</div>
+            <div className="mt-1 text-xs text-gray-500">2yrs 4 mos</div>
           </div>
           <div className="col-span-3">
             <h4 className="text-lg font-bold text-gray-800">
               Full Stack Engineer
             </h4>
             <p className="text-sm italic text-gray-700">
-              Prevedello Sistems, RS, Brazil
+              Prevedello Sistems, Brazil
             </p>
             <ul className="ml-4 list-disc">
               <li className="text-sm leading-normal text-gray-700">
-                Maintenance and development of new features
+                Worked along with the team in the maintenance and development of
+                new features for the company's ERP (Enterprise resource
+                planning) and database modeling
               </li>
               <li className="text-sm leading-normal text-gray-700">
-                Model and perform database maintenance
-              </li>
-              <li className="text-sm leading-normal text-gray-700">
-                Integration with external APIs (warehouse stock management,
-                e-commerce, etc)
-              </li>
-              <li className="text-sm leading-normal text-gray-700">
-                Testing and QA routines
-              </li>
-              <li className="text-sm leading-normal text-gray-700">
-                System migration scripts
+                Performed integration with 3rd party APIs (warehouse, stock
+                management, e-commerce, etc) and Testing/QA routines
               </li>
             </ul>
           </div>
           {/* Work #3 */}
           <div className="col-span-1 text-sm text-gray-700">
             <div>2016-03 - </div>
-            <div>2018-06</div>
+            <div>2017-04</div>
+            <div className="mt-1 text-xs text-gray-500">1yr 2 mos</div>
           </div>
           <div className="col-span-3">
             <h4 className="text-lg font-bold text-gray-800">
-              IT Support Analyst
+              Technical Support Analyst
             </h4>
             <p className="text-sm italic text-gray-700">
-              Prevedello Sistems, RS, Brazil
+              Prevedello Sistems, Brazil
             </p>
             <ul className="ml-4 list-disc">
               <li className="text-sm leading-normal text-gray-700">
-                Evaluate user problems
-              </li>
-              <li className="text-sm leading-normal text-gray-700">
-                Identify potential sales and cross-selling opportunities
-              </li>
-              <li className="text-sm leading-normal text-gray-700">
-                Respond to support requests and patiently walk individuals
-                through basic troubleshooting tasks
+                Evaluate user problems, respond to support requests and
+                patiently walk individuals through basic troubleshooting tasks
               </li>
             </ul>
           </div>

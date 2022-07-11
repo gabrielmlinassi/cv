@@ -1,7 +1,24 @@
 export default function Home() {
   return (
-    <section className="flex items-center justify-center h-screen w-screen bg-gradient-to-tl from-pink-500 to-indigo-500">
-      <h1 className="text-5xl text-white font-bold">Under Construction ...</h1>
+    <section className="flex h-screen w-screen flex-col items-center justify-center">
+      <h1 className="text-4.75xl font-bold sm:text-5xl">Coming Soon 🥔</h1>
+      <p className="mt-6 text-center text-lg">
+        In the meantime, check out my{" "}
+        <a href="https://github.com/gabrielmlinassi" className="text-blue-500">
+          GitHub
+        </a>
+        , my{" "}
+        <a href="https://twitter.com/gabrielmlinassi" className="text-blue-500">
+          Twitter
+        </a>
+        , or my{" "}
+        <a
+          href="https://www.linkedin.com/in/gabrielmlinassi/"
+          className="text-blue-500"
+        >
+          LinkedIn
+        </a>
+      </p>
     </section>
   );
 }

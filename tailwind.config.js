@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        "4.75xl": "2.75rem" /* 44px */,
+      },
       fontFamily: {
         sans: [
           "Century Gothic, sans-serif",

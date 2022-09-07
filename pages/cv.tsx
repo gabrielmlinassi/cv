@@ -51,7 +51,7 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
         <div className="px-4 py-6 pb-2">
           <h1 className="text-4xl font-bold text-white">Gabriel M. Linassi</h1>
           <div className="mt-1">
-            <h2 className="text-xl text-white">Software Engieer</h2>
+            <h2 className="text-xl text-white">Software Engineer</h2>
           </div>
         </div>
         {/* Contact */}

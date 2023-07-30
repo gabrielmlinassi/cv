@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ActionButton } from "@components/operations/ActionButton";
 import { CopyToClipboard } from "@components/common";
-import cn from "cn";
+import cn from "classnames";
 
 type State = {
   entries: { [key in `entry-${number}`]: number };

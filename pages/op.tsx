@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ActionButton } from "@components/operations/ActionButton";
 import { CopyToClipboard } from "@components/common";
 import cn from "classnames";
+import { MoneyHelpers } from "utils/money";
 
 type State = {
   entries: { [key in `entry-${number}`]: number };
@@ -17,13 +18,6 @@ const OperationsPage = () => {
     risk: 0,
     stop: 0,
   });
-
-  useEffect(() => {
-    setState((state) => ({
-      ...state,
-      stop: 0,
-    }));
-  }, [stopDisplay]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.id.startsWith("entry-")) {
@@ -118,7 +112,10 @@ const OperationsPage = () => {
                 <label htmlFor="entry">Stop:</label>
                 <div className="space-x-1">
                   <button
-                    onClick={() => setStopDisplay("num")}
+                    onClick={() => {
+                      setStopDisplay("num");
+                      setState((state) => ({ ...state, stop: 0 }));
+                    }}
                     className={cn([
                       "inline-flex w-5 items-center justify-center rounded border border-slate-600 text-sm",
                       stopDisplay === "num" && "bg-slate-600 text-white",
@@ -196,20 +193,52 @@ const OperationsPage = () => {
               </div>
             </div>
             <pre>
-              <div className="flex items-center gap-2">
-                <span>Position Size..:</span>{" "}
-                {!!positionSize && (
+              <div>
+                {entriesQty > 1 ? (
                   <>
-                    {Intl.NumberFormat("en-us", {
-                      style: "currency",
-                      currency: "USD",
-                    }).format(positionSize)}
-                    <CopyToClipboard value={positionSize.toString()} />
+                    <ul>
+                      {Object.values(state.entries).map((entry, key) => (
+                        <li key={key}>
+                          <span>
+                            Entry {key + 1} ({MoneyHelpers.format(entry)}
+                            ): {(positionSize / entriesQty).toFixed(2)}
+                          </span>
+                          <CopyToClipboard
+                            value={(positionSize / entriesQty).toFixed(2)}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                    <div>
+                      <span>Total Position Size..:</span>{" "}
+                      {!!positionSize && (
+                        <>
+                          {Intl.NumberFormat("en-us", {
+                            style: "currency",
+                            currency: "USD",
+                          }).format(positionSize)}
+                          <CopyToClipboard value={positionSize.toString()} />
+                        </>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <span>Position Size..:</span>{" "}
+                    {!!positionSize && (
+                      <>
+                        {Intl.NumberFormat("en-us", {
+                          style: "currency",
+                          currency: "USD",
+                        }).format(positionSize)}
+                        <CopyToClipboard value={positionSize.toString()} />
+                      </>
+                    )}
                   </>
                 )}
               </div>
               <div>
-                Max Leverage...:{" "}
+                Max Leverage.........:{" "}
                 {!!stopPerc && `${Math.round(100 / stopPerc) - 1}x`}
               </div>
             </pre>

@@ -10,7 +10,7 @@
 import { forwardRef, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { PrinterIcon } from "@heroicons/react/solid";
-import SkillsSection from "@components/cv/Skills";
+import SkillsSection from "components/cv/Skills";
 import { SKILLS } from "data/Skills";
 import { LANGUAGES } from "data/Languages";
 
@@ -89,7 +89,7 @@ const CV = forwardRef<HTMLDivElement>((props, ref) => {
       </div>
 
       <div className="bg-white p-6">
-        <p className="text-sm leading-relaxed text-gray-700 line-clamp-5">
+        <p className="line-clamp-5 text-sm leading-relaxed text-gray-700">
           Front-End Engineer with 5 years of experience with detailed
           understanding in developing modern and responsive interfaces for a
           wide range of businesses. Excellent grasp of React, Nextjs, TS, Redux,

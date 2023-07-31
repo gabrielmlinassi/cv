@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { ActionButton } from "@components/operations/ActionButton";
-import { CopyToClipboard } from "@components/common";
+import { useState } from "react";
 import cn from "classnames";
-import { MoneyHelpers } from "utils/money";
+
+import { ActionButton } from "components/operations";
+import { CopyToClipboard } from "components/CopyToClipboard";
+import { MoneyHelpers } from "lib/money";
 
 type State = {
   entries: { [key in `entry-${number}`]: number };

@@ -1,5 +1,4 @@
-import { CopyIcon } from "@components/operations/icons/CopyIcon";
-import { useState } from "react";
+import { CopyIcon } from "components/operations/icons";
 import { useCopyToClipboard } from "./useCopyToClipboard";
 
 type CopyToClipboardProps = {

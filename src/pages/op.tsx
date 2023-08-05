@@ -4,6 +4,9 @@ import cn from "classnames";
 import { ActionButton } from "components/operations";
 import { CopyToClipboard } from "components/CopyToClipboard";
 import { MoneyHelpers } from "lib/money";
+import { InputWithPrefix, TextField } from "@/components/ui/input-with-label";
+import { AddInput } from "@/components/ui/add-input";
+import { Label } from "@/components/ui/label";
 
 type State = {
   entries: { [key in `entry-${number}`]: number };
@@ -66,38 +69,29 @@ const OperationsPage = () => {
           </h1>
           <div className="mt-4 space-y-5 rounded bg-white px-5 py-5">
             <div>
-              <label htmlFor="entry">
+              <Label htmlFor="entry-1">
                 {entriesQty > 1 ? "Partial Entries:" : "Entry:"}
-              </label>
+              </Label>
               <div className="space-y-1">
                 {Array.from({ length: entriesQty }, (v, k) => k + 1).map(
                   (key) => (
                     <div key={key} className="flex flex-col gap-0.5">
-                      <div className="flex">
-                        <div className="relative">
-                          <input
-                            type="number"
-                            id={`entry-${key}`}
-                            value={state.entries[`entry-${key}`]}
-                            onChange={handleInputChange}
-                            className="h-9 w-[250px] rounded pl-10"
-                          />
-                          <div className="absolute left-0 top-0 bottom-0 flex w-7 items-center justify-center rounded-l bg-slate-500 text-white">
-                            {stopDisplay === "num" ? "$" : "%"}
-                          </div>
-                        </div>
-                        {entriesQty === key && (
-                          <button
-                            onClick={handleAddNewEntry}
-                            className="ml-1 inline-flex w-7 items-center justify-center rounded bg-slate-600 text-sm text-white"
-                          >
-                            +
-                          </button>
-                        )}
-                      </div>
+                      <InputWithPrefix
+                        type="number"
+                        id={`entry-${key}`}
+                        value={state.entries[`entry-${key}`]}
+                        onChange={handleInputChange}
+                        prefix={stopDisplay === "num" ? "$" : "%"}
+                      />
+                      {entriesQty === key && (
+                        <AddInput onClick={handleAddNewEntry} />
+                      )}
                     </div>
                   )
                 )}
+
+                {/*  */}
+
                 <div className="text-sm">
                   Avg. Entry price:{" "}
                   {Intl.NumberFormat("en-us", {

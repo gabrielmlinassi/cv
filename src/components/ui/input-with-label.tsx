@@ -1,16 +1,20 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib";
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, ReactNode } from "react";
 
 type TextFieldProps = {
   label: string;
+  renderLabel?: () => ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-export function TextField({ label, prefix, ...inputProps }: TextFieldProps) {
+export function TextField({ label, renderLabel, prefix, ...inputProps }: TextFieldProps) {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label htmlFor={inputProps.name ?? inputProps.id}>{label}</Label>
+      <div className="flex items-center gap-5">
+        <Label htmlFor={inputProps.name ?? inputProps.id}>{label}</Label>
+        {renderLabel?.()}
+      </div>
       <InputWithPrefix prefix={prefix} {...inputProps} />
     </div>
   );

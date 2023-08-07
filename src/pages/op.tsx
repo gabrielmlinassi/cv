@@ -11,7 +11,7 @@ import { useImmer } from "use-immer";
 
 const OperationsPage = () => {
   const [display, setDisplay] = useState<Display>("money");
-  const [entries, setEntries] = useImmer<Entries>({ 0: { price: 0, percentage: 0 } });
+  const [entries, setEntries] = useImmer<Entries>({ 0: { price: 0, percentage: 100 } });
   const [stop, setStop] = useState(0);
   const [risk, setRisk] = useState(0);
 
@@ -19,6 +19,8 @@ const OperationsPage = () => {
     const sumPercentual = Object.values(entries).reduce((acc, curr) => {
       return acc + curr.percentage;
     }, 0);
+
+    console.log({ sumPercentual });
 
     const sumEntries = Object.values(entries).reduce((acc, curr) => {
       return acc + curr.price * curr.percentage;
@@ -38,6 +40,8 @@ const OperationsPage = () => {
   const setRiskTo = (value: number) => {
     setRisk(value);
   };
+
+  console.log({ entries, stop, stopPerc, avgEntry });
 
   function handleChangeDisplay(value: typeof display) {
     setStop(0);
@@ -103,7 +107,7 @@ const OperationsPage = () => {
                 )}
               />
             </div>
-            <Summary {...{ entries, avgEntry, stop, risk, display }} />
+            <Summary {...{ entries, avgEntry, stop, risk }} />
           </div>
         </div>
       </div>

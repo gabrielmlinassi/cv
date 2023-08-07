@@ -2,26 +2,28 @@ import { formatAsMoney } from "@/lib";
 import { CopyToClipboard } from "../CopyToClipboard";
 import { Display } from "./display-toggler";
 import { ReactNode } from "react";
+import { Entries } from "./entries";
 
 type SummaryProps = {
-  entries: number[];
+  entries: Entries;
   avgEntry: number;
   stop: number;
   risk: number;
-  display: Display;
 };
 
-export function Summary({ entries, avgEntry, stop, risk, display }: SummaryProps) {
+export function Summary({ entries, avgEntry, stop, risk }: SummaryProps) {
   const stopPerc = 100 - (stop / avgEntry) * 100;
   const position = +((risk / stopPerc) * 100).toFixed(2) || 0;
   const maxLeverage = 100 / stopPerc || 0;
 
-  console.log({ position, maxLeverage, stopPerc });
+  console.log({ stopPerc, position, maxLeverage });
 
   return (
     <div>
-      <SummaryItem title={`${entries.length > 1 ? "Avg." : ""} Entry price:`}>
-        {formatAsMoney(avgEntry)}
+      <SummaryItem
+        title={`${Object.entries(entries).length > 1 ? "Avg." : ""} Entry price:`}
+      >
+        {formatAsMoney(avgEntry || 0)}
       </SummaryItem>
       <SummaryItem title="Position Size:">
         <span>{formatAsMoney(position)}</span>

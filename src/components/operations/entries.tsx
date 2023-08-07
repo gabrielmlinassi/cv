@@ -28,6 +28,12 @@ export function Entries({ prefix, entries, setEntries }: EntriesProps) {
     });
   };
 
+  const updtPercentage = (percentage: number, key: number) => {
+    setEntries((draft: Entries) => {
+      draft[key].percentage = percentage;
+    });
+  };
+
   const removeEntry = (entryIdx: number) => {
     setEntries((draft: Entries) => {
       delete draft[entryIdx];
@@ -55,7 +61,8 @@ export function Entries({ prefix, entries, setEntries }: EntriesProps) {
                     type="number"
                     id={`multipler-${key}`}
                     label="Entry %:"
-                    value={percentage}
+                    value={percentage || undefined}
+                    onChange={(e) => updtPercentage(+e.target.value, +key)}
                   />
                 </div>
                 <div className="flex h-9 items-center">

@@ -7,22 +7,40 @@ import { Display, DisplayToggler } from "@/components/operations/display-toggler
 import { TextField } from "@/components/ui/input-with-label";
 import { formatAsMoney, formatAsPercentage } from "@/lib";
 import { Summary } from "@/components/operations/Sumarry";
+import { useImmer } from "use-immer";
 
 const OperationsPage = () => {
   const [display, setDisplay] = useState<Display>("money");
-  const [entries, setEntries] = useState<number[]>([0]);
+  const [entries, setEntries] = useImmer<Entries>({ 0: { price: 0, percentage: 0 } });
   const [stop, setStop] = useState(0);
   const [risk, setRisk] = useState(0);
 
   const avgEntry = useMemo(() => {
-    return entries.reduce((acc, curr) => acc + +curr, 0) / entries.length;
+    const sumPercentual = Object.values(entries).reduce((acc, curr) => {
+      return acc + curr.percentage;
+    }, 0);
+
+    const sumEntries = Object.values(entries).reduce((acc, curr) => {
+      return acc + curr.price * curr.percentage;
+    }, 0);
+
+    return sumEntries / sumPercentual;
   }, [entries]);
+
+  const stopPerc = useMemo(() => {
+    return (stop / avgEntry) * 100 - 100 || 0;
+  }, [stop, avgEntry]);
+
+  const stopVal = useMemo(() => {
+    return avgEntry - (avgEntry * stop) / 100 || 0;
+  }, [avgEntry, stop]);
 
   const setRiskTo = (value: number) => {
     setRisk(value);
   };
 
   function handleChangeDisplay(value: typeof display) {
+    setStop(0);
     setDisplay(value);
   }
 
@@ -46,19 +64,20 @@ const OperationsPage = () => {
                         onValueChange={handleChangeDisplay}
                       />
                       <div className="text-xs text-red-500">
-                        (
-                        {display === "money"
-                          ? formatAsPercentage((stop / avgEntry) * 100 - 100)
-                          : formatAsMoney(avgEntry - (avgEntry * stop) / 100)}
-                        )
+                        {avgEntry && stop
+                          ? display === "money"
+                            ? `(${formatAsPercentage(stopPerc)})`
+                            : `(${formatAsMoney(stopVal)})`
+                          : null}
                       </div>
                     </div>
                   )}
-                  value={stop}
+                  value={stop || undefined}
                   onChange={(e) => setStop(+e.target.value)}
                   id="stop"
                   type="number"
-                  prefix="$"
+                  prefix={display === "money" ? "$" : "%"}
+                  tabIndex={2}
                 />
               </div>
             </div>
@@ -66,20 +85,24 @@ const OperationsPage = () => {
               <TextField
                 type="number"
                 id="risk"
-                value={risk}
+                value={risk || undefined}
                 label="Risk:"
                 onChange={(e) => setRisk(+e.target.value)}
                 prefix="$"
+                tabIndex={3}
                 renderLabel={() => (
-                  <div className="space-x-1">
-                    <ActionButton onClick={() => setRiskTo(100)}>$100</ActionButton>
-                    <ActionButton onClick={() => setRiskTo(200)}>$200</ActionButton>
-                    <ActionButton onClick={() => setRiskTo(400)}>$400</ActionButton>
+                  <div className="flex items-center gap-1">
+                    {[100, 200, 400].map((value) => (
+                      <div key={`risk-${value}`}>
+                        <ActionButton style="outline" onClick={() => setRiskTo(value)}>
+                          {formatAsMoney(value)}
+                        </ActionButton>
+                      </div>
+                    ))}
                   </div>
                 )}
               />
             </div>
-
             <Summary {...{ entries, avgEntry, stop, risk, display }} />
           </div>
         </div>

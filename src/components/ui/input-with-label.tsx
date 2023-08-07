@@ -10,8 +10,8 @@ type TextFieldProps = {
 
 export function TextField({ label, renderLabel, prefix, ...inputProps }: TextFieldProps) {
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-      <div className="flex items-center gap-5">
+    <div className="w-full items-center gap-1.5">
+      <div className="mb-1 flex items-center gap-5">
         <Label htmlFor={inputProps.name ?? inputProps.id}>{label}</Label>
         {renderLabel?.()}
       </div>
@@ -25,8 +25,8 @@ type InputWithPrefixProps = InputHTMLAttributes<HTMLInputElement>;
 export function InputWithPrefix({ prefix, ...props }: InputWithPrefixProps) {
   return (
     <div className="relative overflow-hidden rounded-md">
-      <TextFieldPrefix prefix={prefix} />
-      <Input {...props} className={cn("pl-10", props.className)} />
+      {!!prefix && <TextFieldPrefix prefix={prefix} />}
+      <Input {...props} className={cn(!!prefix && "pl-10", props.className)} />
     </div>
   );
 }

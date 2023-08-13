@@ -2,25 +2,46 @@ import { useMemo, useState } from "react";
 
 import { ActionButton } from "components/operations";
 
-import { Entries } from "@/components/operations/entries";
+import { Entries, IEntries } from "@/components/operations/entries";
 import { Display, DisplayToggler } from "@/components/operations/display-toggler";
 import { TextField } from "@/components/ui/input-with-label";
 import { formatAsMoney, formatAsPercentage } from "@/lib";
 import { Summary } from "@/components/operations/Sumarry";
-import { useImmer } from "use-immer";
+import { useFieldArray, useForm } from "react-hook-form";
+
+export type FormValues = {
+  entries: IEntries;
+  stop: number;
+  risk: number;
+};
+
+/**
+ * TODO: Add yup validation
+ *
+ */
 
 const OperationsPage = () => {
   const [display, setDisplay] = useState<Display>("money");
-  const [entries, setEntries] = useImmer<Entries>({ 0: { price: 0, percentage: 100 } });
-  const [stop, setStop] = useState(0);
-  const [risk, setRisk] = useState(0);
+
+  const { register, handleSubmit, getValues, setValue, control } = useForm<FormValues>({
+    defaultValues: {
+      entries: [{ price: 0, percentage: 100 }],
+      risk: 0,
+      stop: 0,
+    },
+  });
+
+  const { fields, append, remove, update } = useFieldArray<FormValues>({
+    control,
+    name: "entries",
+  });
+
+  const { stop, risk, entries } = getValues();
 
   const avgEntry = useMemo(() => {
     const sumPercentual = Object.values(entries).reduce((acc, curr) => {
       return acc + curr.percentage;
     }, 0);
-
-    console.log({ sumPercentual });
 
     const sumEntries = Object.values(entries).reduce((acc, curr) => {
       return acc + curr.price * curr.percentage;
@@ -37,15 +58,13 @@ const OperationsPage = () => {
     return avgEntry - (avgEntry * stop) / 100 || 0;
   }, [avgEntry, stop]);
 
-  const setRiskTo = (value: number) => {
-    setRisk(value);
-  };
-
-  console.log({ entries, stop, stopPerc, avgEntry });
-
   function handleChangeDisplay(value: typeof display) {
-    setStop(0);
+    setValue("stop", 0);
     setDisplay(value);
+  }
+
+  function onSubmit(values: FormValues) {
+    alert(JSON.stringify({ values }, null, 2));
   }
 
   return (
@@ -55,59 +74,70 @@ const OperationsPage = () => {
           <h1 className="text-xl font-bold uppercase">
             Calculate your operation size in pair USDT
           </h1>
-          <div className="mt-4 space-y-5 rounded bg-white px-5 py-5">
-            <Entries {...{ entries, setEntries }} prefix="$" />
-            <div className="flex flex-col gap-0.5">
-              <div>
-                <TextField
-                  label="Stop:"
-                  renderLabel={() => (
-                    <div className="flex w-full items-center justify-between">
-                      <DisplayToggler
-                        defaultValue={display}
-                        onValueChange={handleChangeDisplay}
-                      />
-                      <div className="text-xs text-red-500">
-                        {avgEntry && stop
-                          ? display === "money"
-                            ? `(${formatAsPercentage(stopPerc)})`
-                            : `(${formatAsMoney(stopVal)})`
-                          : null}
-                      </div>
-                    </div>
-                  )}
-                  value={stop || undefined}
-                  onChange={(e) => setStop(+e.target.value)}
-                  id="stop"
-                  type="number"
-                  prefix={display === "money" ? "$" : "%"}
-                  tabIndex={2}
+          <div className="mt-4 rounded bg-white px-5 py-5">
+            <div className="space-y-5 outline-dashed">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Entries
+                  entries={fields}
+                  append={append}
+                  remove={remove}
+                  update={update}
+                  register={register}
+                  prefix="$"
                 />
-              </div>
-            </div>
-            <div>
-              <TextField
-                type="number"
-                id="risk"
-                value={risk || undefined}
-                label="Risk:"
-                onChange={(e) => setRisk(+e.target.value)}
-                prefix="$"
-                tabIndex={3}
-                renderLabel={() => (
-                  <div className="flex items-center gap-1">
-                    {[100, 200, 400].map((value) => (
-                      <div key={`risk-${value}`}>
-                        <ActionButton style="outline" onClick={() => setRiskTo(value)}>
-                          {formatAsMoney(value)}
-                        </ActionButton>
-                      </div>
-                    ))}
+                <div className="flex flex-col gap-0.5">
+                  <div>
+                    <TextField
+                      label="Stop:"
+                      renderLabel={() => (
+                        <div className="flex w-full items-center justify-between">
+                          <DisplayToggler
+                            defaultValue={display}
+                            onValueChange={handleChangeDisplay}
+                          />
+                          <div className="text-xs text-red-500">
+                            {avgEntry && stop
+                              ? display === "money"
+                                ? `(${formatAsPercentage(stopPerc)})`
+                                : `(${formatAsMoney(stopVal)})`
+                              : null}
+                          </div>
+                        </div>
+                      )}
+                      {...register("stop")}
+                      type="number"
+                      prefix={display === "money" ? "$" : "%"}
+                      tabIndex={2}
+                    />
                   </div>
-                )}
-              />
+                </div>
+                <div>
+                  <TextField
+                    label="Risk"
+                    type="number"
+                    {...register("risk")}
+                    prefix="$"
+                    tabIndex={3}
+                    renderLabel={() => (
+                      <div className="flex items-center gap-1">
+                        {[100, 200, 400].map((value) => (
+                          <div key={`risk-${value}`}>
+                            <ActionButton
+                              style="outline"
+                              onClick={() => setValue("risk", value)}
+                            >
+                              {formatAsMoney(value)}
+                            </ActionButton>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  />
+                </div>
+                <button>submit</button>
+              </form>
             </div>
-            <Summary {...{ entries, avgEntry, stop, risk }} />
+            <Summary entries={entries} avgEntry={avgEntry} stop={stop} risk={risk} />
           </div>
         </div>
       </div>

@@ -1,72 +1,66 @@
 import { TrashIcon } from "@radix-ui/react-icons";
 import { TextField } from "components/ui/input-with-label";
 import { ActionButton } from "./ActionButton";
+import {
+  UseFieldArrayAppend,
+  UseFieldArrayRemove,
+  UseFieldArrayUpdate,
+  UseFormRegister,
+} from "react-hook-form";
+import { FormValues } from "@/pages/op";
 
-export type Entries = {
-  [key in number]: { price: number; percentage: number };
-};
+export type IEntries = { price: number; percentage: number }[];
 
 type EntriesProps = {
-  entries: Entries;
-  setEntries: (draft: any) => void;
+  entries: IEntries;
   prefix: "$" | "%";
+  register: UseFormRegister<FormValues>;
+  append: UseFieldArrayAppend<FormValues, "entries">;
+  remove: UseFieldArrayRemove;
+  update: UseFieldArrayUpdate<FormValues, "entries">;
 };
 
-export function Entries({ prefix, entries, setEntries }: EntriesProps) {
+export function Entries({
+  prefix,
+  entries,
+  append,
+  remove,
+  update,
+  register,
+}: EntriesProps) {
   const handleAddNewEntry = () => {
-    setEntries((draft: Entries) => {
-      draft[Object.entries(entries).length] = {
-        price: 0,
-        percentage: 0,
-      };
-    });
-  };
-
-  const handleInputChange = (price: number, key: number) => {
-    setEntries((draft: Entries) => {
-      draft[key].price = price;
-    });
-  };
-
-  const updtPercentage = (percentage: number, key: number) => {
-    setEntries((draft: Entries) => {
-      draft[key].percentage = percentage;
-    });
+    append({ price: 0, percentage: 0 });
   };
 
   const removeEntry = (entryIdx: number) => {
-    setEntries((draft: Entries) => {
-      delete draft[entryIdx];
-    });
+    remove(entryIdx);
   };
 
   return (
     <div>
       <div className="space-y-4">
-        {Object.entries(entries).map(([key, { price, percentage }]) => (
-          <div key={key} className="flex items-center gap-2">
+        {entries.map((_, idx) => (
+          <div key={idx} className="flex items-center gap-2">
             <TextField
               type="number"
-              id={`entry${key}`}
+              id={`entry-${idx}`}
               label="Entry:"
-              value={price || undefined}
-              onChange={(e) => handleInputChange(+e.target.value, +key)}
+              {...register(`entries.${idx}.price`)}
               prefix={prefix}
               tabIndex={1}
             />
-            {Object.entries(entries).length > 1 && (
+            {entries.length > 1 && (
               <div className="flex items-end gap-1">
                 <div className="w-[125px]">
                   <TextField
                     type="number"
-                    id={`multipler-${key}`}
+                    id={`multipler-${idx}`}
                     label="Entry %:"
-                    value={percentage || undefined}
-                    onChange={(e) => updtPercentage(+e.target.value, +key)}
+                    {...register(`entries.${idx}.percentage`)}
                   />
                 </div>
                 <div className="flex h-9 items-center">
-                  <ActionButton onClick={() => removeEntry(+key)}>
+                  <ActionButton onClick={() => removeEntry(+idx)}>
                     <TrashIcon className="h-5 w-5 text-red-500" />
                   </ActionButton>
                 </div>

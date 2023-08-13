@@ -1,11 +1,10 @@
 import { formatAsMoney } from "@/lib";
 import { CopyToClipboard } from "../CopyToClipboard";
-import { Display } from "./display-toggler";
 import { ReactNode } from "react";
-import { Entries } from "./entries";
+import { IEntries } from "./entries";
 
 type SummaryProps = {
-  entries: Entries;
+  entries: IEntries;
   avgEntry: number;
   stop: number;
   risk: number;

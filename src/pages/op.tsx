@@ -8,6 +8,7 @@ import { TextField } from "@/components/ui/input-with-label";
 import { formatAsMoney, formatAsPercentage } from "@/lib";
 import { Summary } from "@/components/operations/Sumarry";
 import { useFieldArray, useForm } from "react-hook-form";
+import { OperationsLayout } from "@/layouts/OperationsLayout";
 
 export type FormValues = {
   entries: IEntries;
@@ -67,78 +68,76 @@ const OperationsPage = () => {
   }
 
   return (
-    <div className="h-screen bg-white py-20">
-      <div className="mx-auto w-fit rounded-lg bg-gray-200 p-8">
-        <div className="inline-block">
-          <h1 className="text-xl font-bold uppercase">
-            Calculate your operation size in pair USDT
-          </h1>
-          <div className="mt-4 rounded bg-white">
-            <div className="space-y-5 px-5 py-6">
-              <Entries
-                entries={fields}
-                append={append}
-                remove={remove}
-                register={register}
-                prefix="$"
-              />
-              <div className="flex flex-col gap-0.5">
-                <div>
-                  <TextField
-                    label="Stop:"
-                    renderLabel={() => (
-                      <div className="flex w-full items-center justify-between">
-                        <DisplayToggler
-                          defaultValue={display}
-                          onValueChange={handleChangeDisplay}
-                        />
-                        <div className="text-xs text-red-500">
-                          {avgEntry && stop
-                            ? display === "money"
-                              ? `(${formatAsPercentage(stopPerc)})`
-                              : `(${formatAsMoney(stopVal)})`
-                            : null}
-                        </div>
-                      </div>
-                    )}
-                    {...register("stop", { valueAsNumber: true })}
-                    type="number"
-                    prefix={display === "money" ? "$" : "%"}
-                    tabIndex={2}
-                  />
-                </div>
-              </div>
+    <OperationsLayout>
+      <div className="ml-[200px] mt-[75px] p-12">
+        <h1 className="text-xl font-bold uppercase">
+          Calculate your operation size in pair USDT
+        </h1>
+        <div className="mt-4 w-[400px] rounded border p-4 shadow-sm">
+          <div className="space-y-5">
+            <Entries
+              entries={fields}
+              append={append}
+              remove={remove}
+              register={register}
+              prefix="$"
+            />
+            <div className="flex flex-col gap-0.5">
               <div>
                 <TextField
-                  label="Risk"
-                  type="number"
-                  {...register("risk", { valueAsNumber: true })}
-                  prefix="$"
-                  tabIndex={3}
+                  label="Stop:"
                   renderLabel={() => (
-                    <div className="flex items-center gap-1">
-                      {[100, 200, 400].map((value) => (
-                        <div key={`risk-${value}`}>
-                          <ActionButton
-                            style="outline"
-                            onClick={() => setValue("risk", value)}
-                          >
-                            {formatAsMoney(value)}
-                          </ActionButton>
-                        </div>
-                      ))}
+                    <div className="flex w-full items-center justify-between">
+                      <DisplayToggler
+                        defaultValue={display}
+                        onValueChange={handleChangeDisplay}
+                      />
+                      <div className="text-xs text-red-500">
+                        {avgEntry && stop
+                          ? display === "money"
+                            ? `(${formatAsPercentage(stopPerc)})`
+                            : `(${formatAsMoney(stopVal)})`
+                          : null}
+                      </div>
                     </div>
                   )}
+                  {...register("stop", { valueAsNumber: true })}
+                  type="number"
+                  prefix={display === "money" ? "$" : "%"}
+                  tabIndex={2}
                 />
               </div>
             </div>
-            <div className="border-t px-5 py-5">
-              <Summary entries={entries} avgEntry={avgEntry} stop={stop} risk={risk} />
+            <div>
+              <TextField
+                label="Risk"
+                type="number"
+                {...register("risk", { valueAsNumber: true })}
+                prefix="$"
+                tabIndex={3}
+                renderLabel={() => (
+                  <div className="flex items-center gap-1">
+                    {[100, 200, 400].map((value) => (
+                      <div key={`risk-${value}`}>
+                        <ActionButton
+                          style="outline"
+                          onClick={() => setValue("risk", value)}
+                        >
+                          {formatAsMoney(value)}
+                        </ActionButton>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              />
             </div>
+          </div>
+          <div className="border-t px-5 py-5">
+            <Summary entries={entries} avgEntry={avgEntry} stop={stop} risk={risk} />
           </div>
         </div>
       </div>
-    </div>
+    </OperationsLayout>
   );
 };
 

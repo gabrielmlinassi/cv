@@ -17,17 +17,9 @@ type EntriesProps = {
   register: UseFormRegister<FormValues>;
   append: UseFieldArrayAppend<FormValues, "entries">;
   remove: UseFieldArrayRemove;
-  update: UseFieldArrayUpdate<FormValues, "entries">;
 };
 
-export function Entries({
-  prefix,
-  entries,
-  append,
-  remove,
-  update,
-  register,
-}: EntriesProps) {
+export function Entries({ prefix, entries, append, remove, register }: EntriesProps) {
   const handleAddNewEntry = () => {
     append({ price: 0, percentage: 0 });
   };
@@ -45,7 +37,7 @@ export function Entries({
               type="number"
               id={`entry-${idx}`}
               label="Entry:"
-              {...register(`entries.${idx}.price`)}
+              {...register(`entries.${idx}.price`, { valueAsNumber: true })}
               prefix={prefix}
               tabIndex={1}
             />
@@ -56,7 +48,7 @@ export function Entries({
                     type="number"
                     id={`multipler-${idx}`}
                     label="Entry %:"
-                    {...register(`entries.${idx}.percentage`)}
+                    {...register(`entries.${idx}.percentage`, { valueAsNumber: true })}
                   />
                 </div>
                 <div className="flex h-9 items-center">

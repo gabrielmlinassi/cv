@@ -15,8 +15,6 @@ export function Summary({ entries, avgEntry, stop, risk }: SummaryProps) {
   const position = +((risk / stopPerc) * 100).toFixed(2) || 0;
   const maxLeverage = 100 / stopPerc || 0;
 
-  console.log({ stopPerc, position, maxLeverage });
-
   return (
     <div>
       <SummaryItem

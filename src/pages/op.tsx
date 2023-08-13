@@ -23,27 +23,30 @@ export type FormValues = {
 const OperationsPage = () => {
   const [display, setDisplay] = useState<Display>("money");
 
-  const { register, handleSubmit, getValues, setValue, control } = useForm<FormValues>({
+  const { register, handleSubmit, setValue, watch, control } = useForm<FormValues>({
     defaultValues: {
       entries: [{ price: 0, percentage: 100 }],
       risk: 0,
       stop: 0,
     },
+    mode: "onBlur",
   });
 
-  const { fields, append, remove, update } = useFieldArray<FormValues>({
+  const { fields, append, remove } = useFieldArray<FormValues>({
     control,
     name: "entries",
   });
 
-  const { stop, risk, entries } = getValues();
+  const entries = watch("entries");
+  const stop = watch("stop");
+  const risk = watch("risk");
 
   const avgEntry = useMemo(() => {
-    const sumPercentual = Object.values(entries).reduce((acc, curr) => {
+    const sumPercentual = entries.reduce((acc, curr) => {
       return acc + curr.percentage;
     }, 0);
 
-    const sumEntries = Object.values(entries).reduce((acc, curr) => {
+    const sumEntries = entries.reduce((acc, curr) => {
       return acc + curr.price * curr.percentage;
     }, 0);
 
@@ -63,81 +66,75 @@ const OperationsPage = () => {
     setDisplay(value);
   }
 
-  function onSubmit(values: FormValues) {
-    alert(JSON.stringify({ values }, null, 2));
-  }
-
   return (
-    <div className="h-screen bg-slate-300 py-20">
-      <div className="mx-auto block max-w-4xl px-3">
+    <div className="h-screen bg-white py-20">
+      <div className="mx-auto w-fit rounded-lg bg-gray-200 p-8">
         <div className="inline-block">
           <h1 className="text-xl font-bold uppercase">
             Calculate your operation size in pair USDT
           </h1>
-          <div className="mt-4 rounded bg-white px-5 py-5">
-            <div className="space-y-5 outline-dashed">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <Entries
-                  entries={fields}
-                  append={append}
-                  remove={remove}
-                  update={update}
-                  register={register}
-                  prefix="$"
-                />
-                <div className="flex flex-col gap-0.5">
-                  <div>
-                    <TextField
-                      label="Stop:"
-                      renderLabel={() => (
-                        <div className="flex w-full items-center justify-between">
-                          <DisplayToggler
-                            defaultValue={display}
-                            onValueChange={handleChangeDisplay}
-                          />
-                          <div className="text-xs text-red-500">
-                            {avgEntry && stop
-                              ? display === "money"
-                                ? `(${formatAsPercentage(stopPerc)})`
-                                : `(${formatAsMoney(stopVal)})`
-                              : null}
-                          </div>
-                        </div>
-                      )}
-                      {...register("stop")}
-                      type="number"
-                      prefix={display === "money" ? "$" : "%"}
-                      tabIndex={2}
-                    />
-                  </div>
-                </div>
+          <div className="mt-4 rounded bg-white">
+            <div className="space-y-5 px-5 py-6">
+              <Entries
+                entries={fields}
+                append={append}
+                remove={remove}
+                register={register}
+                prefix="$"
+              />
+              <div className="flex flex-col gap-0.5">
                 <div>
                   <TextField
-                    label="Risk"
-                    type="number"
-                    {...register("risk")}
-                    prefix="$"
-                    tabIndex={3}
+                    label="Stop:"
                     renderLabel={() => (
-                      <div className="flex items-center gap-1">
-                        {[100, 200, 400].map((value) => (
-                          <div key={`risk-${value}`}>
-                            <ActionButton
-                              style="outline"
-                              onClick={() => setValue("risk", value)}
-                            >
-                              {formatAsMoney(value)}
-                            </ActionButton>
-                          </div>
-                        ))}
+                      <div className="flex w-full items-center justify-between">
+                        <DisplayToggler
+                          defaultValue={display}
+                          onValueChange={handleChangeDisplay}
+                        />
+                        <div className="text-xs text-red-500">
+                          {avgEntry && stop
+                            ? display === "money"
+                              ? `(${formatAsPercentage(stopPerc)})`
+                              : `(${formatAsMoney(stopVal)})`
+                            : null}
+                        </div>
                       </div>
                     )}
+                    {...register("stop", { valueAsNumber: true })}
+                    type="number"
+                    prefix={display === "money" ? "$" : "%"}
+                    tabIndex={2}
                   />
                 </div>
-                <button>submit</button>
-              </form>
+              </div>
+              <div>
+                <TextField
+                  label="Risk"
+                  type="number"
+                  {...register("risk", { valueAsNumber: true })}
+                  prefix="$"
+                  tabIndex={3}
+                  renderLabel={() => (
+                    <div className="flex items-center gap-1">
+                      {[100, 200, 400].map((value) => (
+                        <div key={`risk-${value}`}>
+                          <ActionButton
+                            style="outline"
+                            onClick={() => setValue("risk", value)}
+                          >
+                            {formatAsMoney(value)}
+                          </ActionButton>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                />
+              </div>
             </div>
-            <Summary entries={entries} avgEntry={avgEntry} stop={stop} risk={risk} />
+            <div className="border-t px-5 py-5">
+              <Summary entries={entries} avgEntry={avgEntry} stop={stop} risk={risk} />
+            </div>
           </div>
         </div>
       </div>

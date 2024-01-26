@@ -4,6 +4,10 @@
 
 @layer base {
   :root {
+    --gray10: #181818;
+
+    --color-secondary-txt: rgba(251, 252, 254, 0.85);
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 

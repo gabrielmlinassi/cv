@@ -5,3 +5,10 @@ export type Project = {
   article: string;
   github: string;
 };
+
+export type Experience = {
+  image: { src: string };
+  company: string;
+  role: string;
+  period: string;
+};

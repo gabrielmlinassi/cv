@@ -18,9 +18,10 @@ function getComponent(level: HeadingLevels) {
 }
 
 const heading = tv({
+  base: "antialiased",
   variants: {
     level: {
-      h1: "",
+      h1: "md:text-5xl text-4xl font-bold",
       h2: "py-8 font-medium text-[27px] md:text-[32px] md:font-bold",
     },
   },

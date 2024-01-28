@@ -1,7 +1,7 @@
 export const XLink = () => {
   return (
     <a
-      className="font-medium dark:bg-[#252525] bg-[#f6f6f6] rounded-lg self-start flex items-center justify-center min-h-11 min-w-11 p-2 rounded-1.5 no-underline transition-colors text-secondary-txt bg-transparent leading-none hocus:text-[#1471a9] hocus:dark:text-[#1da1f2] hocus:bg-[#e8f6fe] dark:hocus:bg-[#093049]"
+      className="font-medium dark:bg-gray-8 bg-gray-05 rounded-lg self-start flex items-center justify-center min-h-11 min-w-11 p-2 rounded-1.5 no-underline transition-colors text-secondary-txt bg-transparent leading-none focus:text-[#1471a9] focus:dark:text-[#1da1f2] focus:bg-[#e8f6fe] dark:focus:bg-[#093049]"
       title="𝕏 (formerly Twitter)"
       aria-label="𝕏 (formerly Twitter)"
       data-umami-event="Social link"

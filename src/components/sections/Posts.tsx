@@ -9,30 +9,33 @@ const posts = [
     url: "/websockets-in-redux",
   },
   {
-    title: "Using WebSockets in a Redux Application",
+    title: "Understanding the GraphQL Type System",
     date: "01-02-2024",
-    url: "/websockets-in-redux",
+    url: "/graphql-type-system",
   },
   {
-    title: "Using WebSockets in a Redux Application",
+    title: "An Ode to Animorphs",
     date: "01-02-2024",
-    url: "/websockets-in-redux",
+    url: "/animorphs",
   },
 ];
 
 export const Posts = () => {
   return (
-    <section className="container mt-12">
+    <section className="container mt-5">
       <Heading level="h2">Latest Posts</Heading>
-      <ol className="space-y-2">
+      <ol>
         {posts.map((post) => (
-          <li key={post.title} className="border-b pb-2 border-[#2c2c2c]">
+          <li
+            key={post.title}
+            className="border-b p-[6px] dark:border-[#2c2c2c] border-[#dddddd]"
+          >
             <Link href={post.url}>
               <div className="flex flex-col md:flex-row justify-between md:items-center group">
-                <p className="font-medium text-base text-[#999999] md:text-[17px] group-hover:text-white group-hover:underline group-hover:underline-offset-2 group-hover:decoration-2">
+                <p className="font-semibold antialiased text-base text-[#666666] md:text-[17px] dark:group-hover:text-white group-hover:underline group-hover:underline-offset-2 group-hover:decoration-2">
                   {post.title}
                 </p>
-                <time className="font-mono text-sm text-[#5eddac] font-medium">
+                <time className="font-mono text-base text-[#666666] dark:text-[#5eddac] font-light">
                   {formatPostDate(post.date)}
                 </time>
               </div>

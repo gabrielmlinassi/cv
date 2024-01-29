@@ -10,6 +10,7 @@ export const Footer = () => {
         <LinkedinLink />
         <GithubLink />
       </div>
+      <p className="text-center mt-4 text-sm text-gray-5">Gabriel Linassi © 2024</p>
     </div>
   );
 };

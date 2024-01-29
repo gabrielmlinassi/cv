@@ -31,6 +31,7 @@ module.exports = {
         "orange:": "#ff7e22",
         "yellow:": "#fca62a",
         divider: "rgba(235,240,251,.18)",
+        divider2: "rgba(6,10,21,.12)",
         primary: {
           DEFAULT: "#181818",
           foreground: "hsl(var(--primary-foreground))",

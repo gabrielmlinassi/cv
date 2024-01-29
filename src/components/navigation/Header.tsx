@@ -20,7 +20,7 @@ export const Header = () => {
         <HeaderItem href="/" active={path === "/"}>
           <SaveIcon /> Home
         </HeaderItem>
-        <HeaderItem href="/me" active={path === "/about"}>
+        <HeaderItem href="/me" active={path === "/me"}>
           <SearchIcon /> About
         </HeaderItem>
         <HeaderItem href="/blog" active={path === "/blog"}>

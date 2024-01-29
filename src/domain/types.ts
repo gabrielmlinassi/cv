@@ -11,4 +11,5 @@ export type Experience = {
   company: string;
   role: string;
   period: string;
+  site: string;
 };

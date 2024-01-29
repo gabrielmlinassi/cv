@@ -17,33 +17,43 @@ import {
 import { Heading } from "@/components/typography/Heading";
 import { ExperienceCard } from "./ExperienceCard";
 import { Experience } from "@/domain/types";
-import { Button } from "@/components/Button";
 import { ResumeButton } from "@/components/ResumeButton";
 
 const experiences: Experience[] = [
   {
     image: { src: "/experiences/suvie.jpeg" },
     company: "Suvie Inc.",
-    period: "Sep 2016 - Nov 2018",
-    role: "Software Developer",
+    period: "Jan 2022 - Present",
+    role: "Frontend Developer",
+    site: "https://suvie.com",
   },
   {
     image: { src: "/experiences/upwork.jpeg" },
     company: "Upwork · Freelance",
-    period: "Sep 2016 - Nov 2018",
+    period: "Sep 2018 - Nov 2021",
     role: "Software Developer",
+    site: "https://www.upwork.com/freelancers/~01495164d6c7d49539?s=1110580755057594368",
   },
   {
     image: { src: "/experiences/sweetrush.jpeg" },
     company: "SweetRush Inc.",
-    period: "Sep 2016 - Nov 2018",
-    role: "Software Developer",
+    period: "Jul 2019 - Sep 2020",
+    role: "Frontend Developer",
+    site: "https://www.sweetrush.com/",
   },
   {
     image: { src: "/experiences/pbnew.jpeg" },
-    company: "PBNew Systems LLC",
-    period: "Sep 2016 - Nov 2018",
+    company: "PBNew Systems",
+    period: "Mai 2017 - Aug 2018",
+    role: "Software Developer",
+    site: "https://pbnew.com.br/new/index.html",
+  },
+  {
+    image: { src: "/experiences/pbnew.jpeg" },
+    company: "PBNew Systems",
+    period: "Mar 2016 - Apr 2017",
     role: "Technical Analyst",
+    site: "https://pbnew.com.br/new/index.html",
   },
 ];
 
@@ -78,16 +88,15 @@ export default function Me() {
           </p>
           <ol className="list-disc ml-4 text-gray-6 space-y-2">
             {[
-              { title: "Newsletter", href: "/" },
-              { title: "GitHub", href: "/" },
-              { title: "Twitter", href: "/" },
-            ].map(({ title, href }) => (
-              <li key={title}>
-                <a
-                  href={href}
-                  className="underline underline-offset-2 decoration-2 dark:text-[#98a0fa] text-[#5a43f1]"
-                >
-                  {title}
+              { title: "LinkedIn", href: "https://www.linkedin.com/in/gabrielmlinassi/" },
+              { title: "GitHub", href: "https://github.com/gabrielmlinassi" },
+              { title: "Twitter", href: "https://twitter.com/gabrielmlinassi" },
+            ].map(({ title, href }, key) => (
+              <li key={key}>
+                <a href={href} target="_blank">
+                  <span className="underline underline-offset-2 decoration-2 dark:text-[#98a0fa] text-[#5a43f1]">
+                    {title}
+                  </span>
                 </a>
               </li>
             ))}
@@ -118,11 +127,9 @@ export default function Me() {
           <ResumeButton />
         </div>
         <ol>
-          {experiences.map((experience) => (
-            <li key={experience.company} className="group">
-              <a href="/" target="_blank">
-                <ExperienceCard experience={experience} />
-              </a>
+          {experiences.map((experience, key) => (
+            <li key={key} className="group">
+              <ExperienceCard experience={experience} />
             </li>
           ))}
         </ol>

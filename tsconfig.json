@@ -13,20 +13,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/public/*": ["../public/*"],
-      "@/*": ["*"],
-      "@/components": ["components/*"]
+      "@/public/*": ["public/*"],
+      "@/*": ["src/*"],
+      "@/components": ["src/components/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      },
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }, { "name": "next" }],
     "incremental": true
   },
   "include": [
@@ -34,7 +28,8 @@
     "styles.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
 }

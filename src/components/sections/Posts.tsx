@@ -1,6 +1,7 @@
 import Link from "next/link";
+import dayjs from "dayjs";
+
 import { Heading } from "../typography/Heading";
-import { formatPostDate } from "@/misc/utils";
 
 const posts = [
   {
@@ -36,7 +37,7 @@ export const Posts = () => {
                   {post.title}
                 </p>
                 <time className="font-mono text-base text-[#666666] dark:text-[#5eddac] font-light">
-                  {formatPostDate(post.date)}
+                  {dayjs(post.date).format("MMMM YYYY")}
                 </time>
               </div>
             </Link>

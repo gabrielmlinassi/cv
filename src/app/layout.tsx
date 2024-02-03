@@ -1,4 +1,4 @@
-import "styles/globals.css";
+import "@/styles/globals.css";
 
 import { ReactNode } from "react";
 import { Inter, IBM_Plex_Mono } from "next/font/google";

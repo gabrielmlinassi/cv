@@ -1,10 +1,10 @@
-import { Post, allPosts } from "contentlayer/generated";
 import { groupPosts, sortPosts } from "@/lib/posts-utils";
 import { Heading } from "@/components/typography/Heading";
 import { PostCard } from "@/components/Post";
+import { getAllPostsMeta } from "@/lib/mdx";
 
-export default function Blog() {
-  const groupedPosts = groupPosts(sortPosts(allPosts));
+export default async function BlogPage() {
+  const groupedPosts = groupPosts(sortPosts(await getAllPostsMeta()));
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default function Blog() {
                 <hr className="grow border-gray-3 dark:border-gray-7" />
               </div>
               <ol className="space-y-1 mt-6">
-                {(posts as unknown as Post[]).map((post, idx) => (
+                {posts.map((post: any, idx: number) => (
                   <li key={idx}>
                     <PostCard post={post} />
                   </li>

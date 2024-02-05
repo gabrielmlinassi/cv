@@ -1,0 +1,24 @@
+---
+title: Adding reading time to Astro without the hassle
+summary: An alternative way to calculate reading time without full blog post rendering
+date: 01-04-23
+poster: /posts/post2.avif
+---
+
+## Intro
+
+I recently tried to move my website to Astro, but I wanted to keep most of the existing features.
+
+As you can see in the blog page, the list of blog posts include the time it takes to read each post.
+
+This feature in Astro requires quite a bit of work to be implemented.
+
+## The "official" way
+
+If you followed the [official docs](https://jahir.dev/blog/astro-reading-time) recipe, first you need to install 2 packages:
+
+```sh
+yarn add -D reading-time mdast-util-to-string
+```
+
+Then, you create a custom Remark plugin to add the reading time to the frontmatter property of your blog posts.

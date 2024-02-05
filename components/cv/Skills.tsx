@@ -1,4 +1,4 @@
-import cn from "classnames";
+import cn from "clsx";
 import { type Skill, Rating } from "@/data/Skills";
 
 const RatingClasses: { [key in Rating]: string } = {

@@ -15,10 +15,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/public/*": ["public/*"],
-      "@/*": ["src/*"],
-      "@/components": ["src/components/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": ["./*"],
+      "@/public/*": ["./public/*"],
+      "@/components": ["./components/*"],
+      "#site/content": ["./.velite"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }, { "name": "next" }],
     "incremental": true
@@ -28,8 +28,7 @@
     "styles.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

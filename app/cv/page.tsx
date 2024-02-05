@@ -13,8 +13,8 @@ import { forwardRef, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { PrinterIcon } from "@heroicons/react/solid";
 import SkillsSection from "@/components/cv/Skills";
-import { SKILLS } from "@/data/Skills";
-import { LANGUAGES } from "@/data/Languages";
+import { SKILLS } from "@/content/data/Skills";
+import { LANGUAGES } from "@/content/data/Languages";
 
 export default function Home() {
   const cvRef = useRef<HTMLDivElement>(null);

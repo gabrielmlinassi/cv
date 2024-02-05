@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "@/content/*": ["./content/*"],
       "@/public/*": ["./public/*"],
       "@/components": ["./components/*"],
       "#site/content": ["./.velite"]

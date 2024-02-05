@@ -1,5 +1,5 @@
 import cn from "clsx";
-import { type Skill, Rating } from "@/data/Skills";
+import { type Skill, Rating } from "@/content/data/Skills";
 
 const RatingClasses: { [key in Rating]: string } = {
   excelent: "w-full",

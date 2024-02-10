@@ -38,7 +38,12 @@ export async function readMDXFile<TFrontmatter = Record<string, string>>(slug: s
             rehypePrettyCode,
             {
               keepBackground: false,
-              theme: JSON.parse(readFileSync("public/themes/moonlight-ii.json", "utf-8")),
+              theme: JSON.parse(
+                readFileSync(
+                  path.resolve(process.cwd(), "public/themes/moonlight-ii.json"),
+                  "utf-8",
+                ),
+              ),
             } satisfies Partial<PrettyCodeOptions>,
           ],
         ],

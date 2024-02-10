@@ -13,14 +13,3 @@ export type Experience = {
   period: string;
   site: string;
 };
-
-export type Post = {
-  title: string;
-  slug: string;
-  description: string;
-  createdAt: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-};

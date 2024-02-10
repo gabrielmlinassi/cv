@@ -1,4 +1,4 @@
-import { ComponentType, ReactNode, isValidElement } from "react";
+import { ComponentType, ReactNode } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 
 type IconProps = {

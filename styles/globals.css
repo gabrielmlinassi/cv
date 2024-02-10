@@ -32,6 +32,24 @@
   input[type="number"] {
     -moz-appearance: textfield;
   }
+
+  /*
+   *
+   */
+  [data-rehype-pretty-code-title] {
+    @apply px-3.5 py-2 border-[rgba(235,240,251,.18)] border rounded-t-xl;
+  }
+
+  [data-rehype-pretty-code-title] + pre {
+    @apply border-l border-r border-b border-[rgba(235,240,251,.18)] rounded-b-xl;
+  }
+
+  [data-rehype-pretty-code-title] {
+  }
+
+  code [data-highlighted-line] {
+    @apply bg-slate-500;
+  }
 }
 
 @layer components {

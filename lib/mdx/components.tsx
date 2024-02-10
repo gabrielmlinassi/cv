@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { tv } from "tailwind-variants";
 
 /**
@@ -12,7 +11,7 @@ type HeadingProps = { as: Headings } & React.ComponentProps<Headings>;
 export const Heading = ({ as: As, id, children, ...props }: HeadingProps) => {
   return (
     <As id={id} {...props}>
-      <Link href={`#${id}`}>{children}</Link>
+      {children}
     </As>
   );
 };
@@ -20,9 +19,9 @@ export const Heading = ({ as: As, id, children, ...props }: HeadingProps) => {
 const headingsVariant = tv({
   base: "font-bold my-2",
   slots: {
-    h1: "text-2xl",
-    h2: "text-xl",
-    h3: "text-lg",
+    h1: "text-2xl text-green-500",
+    h2: "text-xl text-red-500 underline underline-offset-2",
+    h3: "text-lg text-yellow-500",
   },
 });
 
@@ -42,3 +41,7 @@ export const H3 = (props: React.ComponentProps<"h3">) => (
  *
  *
  */
+
+export const Code = (props: React.ComponentProps<"code">) => (
+  <code {...props} className="border p-2 my-4 block" />
+);

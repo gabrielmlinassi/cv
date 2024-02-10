@@ -1,10 +1,11 @@
-import { groupPosts, sortPosts } from "@/lib/posts-utils";
+import { groupPosts } from "@/lib/posts-utils";
 import { Heading } from "@/components/typography/Heading";
 import { PostCard } from "@/components/Post";
-import { getAllPostsMeta } from "@/lib/mdx";
+import { getAllPosts } from "@/lib/posts";
 
 export default async function BlogPage() {
-  const groupedPosts = groupPosts(sortPosts(await getAllPostsMeta()));
+  const allPosts = await getAllPosts();
+  const groupedPosts = groupPosts(allPosts);
 
   return (
     <div>

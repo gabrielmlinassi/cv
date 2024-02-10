@@ -1,7 +1,7 @@
 ---
 title: Adding reading time to Astro without the hassle
-summary: An alternative way to calculate reading time without full blog post rendering
-date: 01-04-23
+description: An alternative way to calculate reading time without full blog post rendering
+publishedAt: 01-04-23
 poster: /posts/post2.avif
 ---
 
@@ -19,6 +19,23 @@ If you followed the [official docs](https://jahir.dev/blog/astro-reading-time) r
 
 ```sh
 yarn add -D reading-time mdast-util-to-string
+```
+
+TSX example:
+
+```tsx title="remark-reading-time.mjs"
+"use client";
+
+import { ThemeProvider } from "next-themes";
+import { ReactNode } from "react";
+
+export function Providers({ children }: { children: ReactNode }) {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      {children}
+    </ThemeProvider>
+  );
+}
 ```
 
 Then, you create a custom Remark plugin to add the reading time to the frontmatter property of your blog posts.

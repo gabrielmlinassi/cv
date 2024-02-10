@@ -2,9 +2,9 @@
 module.exports = {
   darkMode: "class",
   content: [
-    "./components/**/*.{js,jsx,ts,tsx}",
-    "./app/**/*.{js,jsx,ts,tsx}",
-    "./content/**/*.{md,mdx}'",
+    "./app/**/*.{mdx,ts,tsx}",
+    "./lib/**/*.{mdx,ts,tsx}",
+    "./components/**/*.{mdx,ts,tsx}",
   ],
   theme: {
     container: {
@@ -47,5 +47,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

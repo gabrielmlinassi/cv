@@ -12,7 +12,7 @@ export const LinkedinLink = () => {
       <svg
         viewBox="0 0 24 24"
         role="presentation"
-        className="size-6 fill-inherit transition-colors delay-[-100ms]"
+        className="size-6 fill-inherit transition-colors delay-100"
         aria-hidden="true"
       >
         <path

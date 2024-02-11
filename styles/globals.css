@@ -9,8 +9,6 @@
 }
 
 @layer base {
-  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
-
   body {
     @apply font-sans font-normal;
   }
@@ -42,9 +40,6 @@
 
   [data-rehype-pretty-code-title] + pre {
     @apply border-l border-r border-b border-[rgba(235,240,251,.18)] rounded-b-xl;
-  }
-
-  [data-rehype-pretty-code-title] {
   }
 
   code [data-highlighted-line] {

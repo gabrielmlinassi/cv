@@ -8,9 +8,11 @@ import { Footer } from "@/components/navigation/Footer";
 import { Providers } from "./providers";
 
 const inter = Inter({
-  subsets: ["latin"],
+  weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-inter",
+  fallback: ["Helvetica", "sans-serif"],
+  subsets: ["latin"],
 });
 
 const ibm_mono = IBM_Plex_Mono({

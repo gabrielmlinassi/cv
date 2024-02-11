@@ -6,12 +6,6 @@
   :root {
     --color-secondary-txt: rgba(251, 252, 254, 0.85);
   }
-}
-
-@layer base {
-  body {
-    @apply font-sans font-normal;
-  }
 
   time {
     @apply font-mono;

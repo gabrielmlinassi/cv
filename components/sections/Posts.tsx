@@ -15,7 +15,7 @@ export const Posts = async () => {
             key={post.frontmatter.title}
             className="border-b p-[6px] dark:border-[#2c2c2c] border-[#dddddd]"
           >
-            <Link href={post.slug}>
+            <Link href={`/blog/${post.slug}`}>
               <div className="flex flex-col md:flex-row justify-between md:items-center group">
                 <p className="font-semibold antialiased text-base text-[#666666] md:text-[17px] dark:group-hover:text-white group-hover:underline group-hover:underline-offset-2 group-hover:decoration-2">
                   {post.frontmatter.description}

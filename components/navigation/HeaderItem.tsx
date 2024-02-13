@@ -32,8 +32,8 @@ export const HeaderItem = (props: HeaderItemProps) => {
     ...restProps
   } = props;
 
-  const Comp = restProps?.href
-    ? restProps?.href.toString()?.startsWith("http")
+  const Comp = !!restProps?.href
+    ? restProps?.href?.toString()?.startsWith("http")
       ? "a"
       : NextLink
     : "button";

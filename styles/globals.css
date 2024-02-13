@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @layer base {
+  @import url(./mdx.css);
+
   :root {
     --color-secondary-txt: rgba(251, 252, 254, 0.85);
   }

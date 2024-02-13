@@ -5,6 +5,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode, { Options as PrettyCodeOptions } from "rehype-pretty-code";
+import { components } from "./components";
 
 const cntl = String.raw;
 
@@ -20,7 +21,7 @@ export async function readMDXFile<TFrontmatter = Record<string, string>>(slug: s
 
   const result = await compileMDX<TFrontmatter>({
     source,
-    components: {},
+    components,
     options: {
       parseFrontmatter: true,
       mdxOptions: {

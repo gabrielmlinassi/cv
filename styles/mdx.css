@@ -1,0 +1,11 @@
+.mdx pre {
+  @apply rounded-xl bg-[rgba(136,164,230,.1)] py-2.5 px-3 mb-4;
+}
+
+.mdx [data-rehype-pretty-code-title] + pre {
+  @apply rounded-t-none;
+}
+
+.mdx [data-rehype-pretty-code-title] {
+  @apply font-mono;
+}

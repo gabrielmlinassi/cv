@@ -33,7 +33,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </time>
         </p>
       </div>
-      <article className="mdx mt-12">
+      <article className="mdx mt-8">
         <div className="flex flex-col gap-3">{content}</div>
       </article>
     </div>

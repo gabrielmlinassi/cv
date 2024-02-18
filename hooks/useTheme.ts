@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 import { useTheme as useNextTheme } from "next-themes";
 
+type Theme = "light" | "dark";
+
 export const useTheme = () => {
   const { setTheme, resolvedTheme } = useNextTheme();
 
@@ -8,5 +10,8 @@ export const useTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   }, [setTheme, resolvedTheme]);
 
-  return { toggleTheme };
+  return {
+    toggleTheme,
+    theme: resolvedTheme as Theme,
+  };
 };

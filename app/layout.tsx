@@ -29,10 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
       className={`${inter.variable} ${ibm_mono.variable}`}
     >
-      <body className="bg-white dark:bg-[#0c121e] mb-12 font-sans">
+      <body className="bg-white dark:bg-[#0c121e] mb-10 font-sans">
         <Providers>
           <Header />
-          <main>{children}</main>
+          <main className="pt-[130px] flex flex-col gap-14">{children}</main>
           <Footer />
         </Providers>
       </body>

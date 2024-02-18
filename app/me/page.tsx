@@ -18,6 +18,10 @@ import { Heading } from "@/components/typography/Heading";
 import { ExperienceCard } from "./ExperienceCard";
 import { Experience } from "@/domain/types";
 import { ResumeButton } from "@/components/ResumeButton";
+import Image from "next/image";
+import { XLink } from "@/components/social/XLink";
+import { LinkedinLink } from "@/components/social/LinkedinLink";
+import { GithubLink } from "@/components/social/GithubLink";
 
 const experiences: Experience[] = [
   {
@@ -59,10 +63,12 @@ const experiences: Experience[] = [
 
 export default function Me() {
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex flex-col gap-14">
       <section className="container">
-        <Heading level="h1">About me</Heading>
-        <div className="space-y-6 mt-7 text-base md:text-lg leading-relaxed dark:text-gray-3 text-gray-7">
+        <h1 className="text-2xl font-bold text-transparent bg-clip-text from-[#38bdf8] to-[#4ade80] bg-gradient-to-r inline-block">
+          About me
+        </h1>
+        <div className="flex flex-col gap-6 mt-7 leading-relaxed dark:text-gray-3 text-gray-7">
           <p>
             Hey, I&apos;m Gabriel, a front-end developer with over five (5) years of
             professional experience.
@@ -76,35 +82,55 @@ export default function Me() {
             and I thrive in globally-remote teams that value people and embrace trust,
             kindness, and inclusion.
           </p>
+          <figure>
+            <div className="-mx-4 md:-mx-5">
+              <Image
+                src="/me/rj.jpg"
+                priority
+                width={850}
+                height={300}
+                alt="In Rio de Janeiro, Brazil – Nov '23"
+                className="md:rounded-lg"
+              />
+            </div>
+            <figcaption className="mt-2 text-sm text-center">
+              In Rio de Janeiro, Brazil – Nov &apos;23
+            </figcaption>
+          </figure>
           <p>
-            Feel free to contact me by email at{" "}
-            <a
-              href="mailto:hello@taniarascia.com"
-              className="hover:underline underline-offset-2"
-            >
-              hello@taniarascia.com
-            </a>{" "}
-            to say hi!
+            I&apos;m a huge advocate for open source and collaborating with the community.
+            You can find my stash of websites, libraries, and apps on GitHub which have
+            earned over 2K stars.
           </p>
-          <ol className="list-disc ml-4 text-gray-6 space-y-2">
-            {[
-              { title: "LinkedIn", href: "https://www.linkedin.com/in/gabrielmlinassi/" },
-              { title: "GitHub", href: "https://github.com/gabrielmlinassi" },
-              { title: "Twitter", href: "https://twitter.com/gabrielmlinassi" },
-            ].map(({ title, href }, key) => (
-              <li key={key}>
-                <a href={href} target="_blank">
-                  <span className="underline underline-offset-2 decoration-2 dark:text-[#98a0fa] text-[#5a43f1]">
-                    {title}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ol>
+          <p>
+            I&apos;m all about diving into challenges improving and expanding my skillset
+            and I thrive in globally-remote teams that value people and embrace trust,
+            kindness, and inclusion.
+          </p>
+          <section className="flex flex-col gap-2.5">
+            <h2 className="font-bold text-base">Let&apos;s connect!</h2>
+            <p>
+              Feel free to contact me by email at{" "}
+              <a
+                href="mailto:hello@taniarascia.com"
+                className="hover:underline underline-offset-2"
+              >
+                gabrielm.linassi@gmail.com
+              </a>{" "}
+              to say hi!
+            </p>
+            <div className="flex gap-2 items-center">
+              <XLink />
+              <LinkedinLink />
+              <GithubLink />
+            </div>
+          </section>
         </div>
       </section>
-      <section className="container mt-8">
-        <Heading level="h2">Skills</Heading>
+      <section className="container mt-8 flex flex-col gap-5">
+        <h2 className="text-2xl font-bold text-transparent bg-clip-text from-[#38bdf8] to-[#4ade80] bg-gradient-to-r inline-block">
+          Skills
+        </h2>
         <div className="flex flex-wrap gap-2">
           <Badge Icon={TypeScriptIcon}>TypeScript</Badge>
           <Badge Icon={JavaScriptIcon}>JavaScript</Badge>

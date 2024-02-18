@@ -1,4 +1,3 @@
-import { Heading } from "../../typography/Heading";
 import { Project } from "@/domain/types";
 import { ProjectCard } from "./ProjectCard";
 
@@ -50,8 +49,10 @@ const projects: Project[] = [
 export const Projects = () => {
   return (
     <section className="container pt-8 md:pt-14">
-      <Heading level="h2">Projects</Heading>
-      <ol className="grid md:grid-cols-3 gap-4">
+      <h2 className="text-2xl font-bold text-transparent bg-clip-text from-[#fb7185] to-[#a78bfa] bg-gradient-to-r inline-block">
+        Projects
+      </h2>
+      <ol className="grid md:grid-cols-3 gap-4 mt-10">
         {projects.map((project) => (
           <li key={project.title}>
             <ProjectCard project={project} />

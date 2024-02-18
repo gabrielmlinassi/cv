@@ -4,13 +4,15 @@ import { XLink } from "../social/XLink";
 
 export const Footer = () => {
   return (
-    <div className="container">
-      <div className="flex items-center gap-2 justify-center mt-[80px] dark:border-t pt-6 border-[#2c2c2c]">
-        <XLink />
-        <LinkedinLink />
-        <GithubLink />
+    <div className="dark:border-t border-[hsl(220,43%,15%)] mt-[80px]">
+      <div className="flex items-center container mt-10 justify-between">
+        <p className="text-center text-sm dark:text-gray-300">Made by Gabriel © 2024</p>
+        <div className="flex items-center gap-2 justify-center">
+          <XLink />
+          <LinkedinLink />
+          <GithubLink />
+        </div>
       </div>
-      <p className="text-center mt-4 text-sm text-gray-5">Gabriel Linassi © 2024</p>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -44,8 +46,35 @@ module.exports = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+
+        "nav-bg": "var(--color-nav-bg)",
+        "nav-border": "var(--color-nav-border)",
+        loading: "var(--color-loading)",
+
+        "project-card-1": "hsl(var(--color-green) / 0.24)",
+        "project-card-1-highlight": "hsl(var(--color-green) / 1)",
+
+        "project-card-2": "hsl(var(--color-light-blue) / 0.24)",
+        "project-card-2-highlight": "hsl(var(--color-light-blue) / 1)",
+
+        "project-card-3": "hsl(var(--color-light-purple) / 0.24)",
+        "project-card-3-highlight": "hsl(var(--color-light-purple) / 1)",
+
+        "project-card-4": "hsl(var(--color-pink) / 0.24)",
+        "project-card-4-highlight": "hsl(var(--color-pink) / 1)",
+
+        "project-card-5": "hsl(var(--color-violet) / 0.24)",
+        "project-card-5-highlight": "hsl(var(--color-violet) / 1)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".foo": { color: "yellow" },
+      });
+    }),
+  ],
 };

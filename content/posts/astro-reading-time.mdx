@@ -21,21 +21,34 @@ If you followed the [official docs](https://jahir.dev/blog/astro-reading-time) r
 yarn add -D reading-time mdast-util-to-string
 ```
 
-TSX example:
+Then, you create a custom Remark plugin to add the reading time to the frontmatter property of your blog posts.
 
 ```tsx title="remark-reading-time.mjs"
-"use client";
+import getReadingTime from "reading-time";
+import { toString } from "mdast-util-to-string";
 
-import { ThemeProvider } from "next-themes";
-import { ReactNode } from "react";
-
-export function Providers({ children }: { children: ReactNode }) {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      {children}
-    </ThemeProvider>
-  );
+export function remarkReadingTime() {
+  return function (tree, { data }) {
+    const textOnPage = toString(tree);
+    const readingTime = getReadingTime(textOnPage);
+    // readingTime.text will give us minutes read as a friendly string,
+    // i.e. "3 min read"
+    data.astro.frontmatter.minutesRead = readingTime.text;
+  };
 }
+```
+
+And finally, you add it to your remark plugins array.
+
+```tsx title="astro.config.mjs"
+import { defineConfig } from "astro/config";
+import { remarkReadingTime } from "./remark-reading-time.mjs";
+
+export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
+});
 ```
 
 Then, you create a custom Remark plugin to add the reading time to the frontmatter property of your blog posts.

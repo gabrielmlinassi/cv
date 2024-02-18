@@ -2,7 +2,7 @@ import { Heading } from "../typography/Heading";
 
 export const Hero = () => {
   return (
-    <section className="container pt-8 md:pt-[100px] md:pb-12">
+    <section className="container">
       <div className="w-full grid md:grid-cols-[4fr,2fr]">
         <div>
           <Heading level="h1">Hey, I&apos;m Gabriel</Heading>

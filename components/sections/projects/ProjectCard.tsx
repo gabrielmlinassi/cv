@@ -5,7 +5,7 @@ import { tv } from "tailwind-variants";
 
 const project = tv({
   slots: {
-    link: "dark:bg-[#252525] p-2 rounded-lg leading-none border dark:border-gray-7 dark:hover:border-gray-6 border-gray-3 hover:border-gray-4",
+    link: "p-2 rounded-lg leading-none border dark:border-gray-700 dark:hover:border-gray-6 border-gray-3 hover:border-gray-4",
   },
 });
 
@@ -26,8 +26,8 @@ const ProjectCardLink = ({ href, children }: { href: string; children: ReactNode
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div className="border bg-gray-0 dark:bg-[#1f1f1f] p-6 rounded-lg border-gray-3 dark:border-[#2c2c2c]">
-      <time className="text-gray-5 dark:text-[#5eddac] text-sm font-mono">
+    <div className="border flex flex-col gap-1 bg-gray-0 dark:bg-gray-50/5 p-6 rounded-lg border-gray-3 dark:border-[#2c2c2c]">
+      <time className="text-[#25b17b] dark:text-[#5eddac] text-sm font-mono">
         {project.date}
       </time>
       <a
@@ -37,10 +37,10 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       >
         {project.title}
       </a>
-      <p className="font-normal mt-1 mb-4 text-sm text-gray-6 dark:text-gray-5">
+      <p className="font-normal text-sm text-gray-6 dark:text-gray-3">
         {project.description}
       </p>
-      <div className="space-x-1 text-sm font-normal">
+      <div className="flex gap-2 mt-2 text-sm font-normal">
         <ProjectCardLink href={project.article}>Article</ProjectCardLink>
         <ProjectCardLink href={project.github}>Demo</ProjectCardLink>
       </div>

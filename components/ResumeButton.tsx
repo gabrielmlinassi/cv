@@ -7,7 +7,7 @@ const CVLink = `https://drive.google.com/file/d/1TUPGu-IvCC2yYQLDIskvNJUM0bWMCNO
 
 export const ResumeButton = () => {
   return (
-    <Button asChild>
+    <Button asChild className="dark:bg-red-500">
       <a href={CVLink} target="_blank">
         <Notepad2Icon /> Resume
       </a>

@@ -20,11 +20,13 @@ export const Posts = async () => {
             >
               <Image
                 src={post.frontmatter.poster}
-                alt=""
-                width={100}
-                height={70}
-                className="rounded object-cover mt-1"
+                alt={`Hero image for blog post "${post.frontmatter.title}"`}
+                width="0"
+                height="0"
+                sizes="100px"
+                className="rounded object-cover mt-1 w-[100px] h-auto"
               />
+
               <div className="flex flex-col gap-1">
                 <p className="font-medium dark:text-white group-hover:underline decoration-2 underline-offset-2">
                   {post.frontmatter.title}

@@ -12,7 +12,7 @@ type BadgeProps = {
 } & VariantProps<typeof badge>;
 
 const badge = tv({
-  base: "flex items-center gap-[6px] px-3 py-2 rounded-lg text-base leading-none border dark:border-gray-7 cursor-default",
+  base: "flex items-center gap-[6px] px-3 py-2 rounded-lg text-sm text-gray-100 leading-none border dark:border-gray-7 cursor-default bg-[rgba(34,62,128,.1)]",
 });
 
 export const Badge = ({ children, Icon, className }: BadgeProps) => {

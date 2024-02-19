@@ -14,7 +14,6 @@ import {
   GitIcon,
   RadixIcon,
 } from "@/components/icons/skills";
-import { Heading } from "@/components/typography/Heading";
 import { ExperienceCard } from "./ExperienceCard";
 import { Experience } from "@/domain/types";
 import { ResumeButton } from "@/components/ResumeButton";
@@ -63,8 +62,8 @@ const experiences: Experience[] = [
 
 export default function Me() {
   return (
-    <div className="mt-8 flex flex-col gap-14">
-      <section className="container">
+    <div className="mt-8 flex flex-col gap-14 container">
+      <section>
         <h1 className="text-2xl font-bold text-transparent bg-clip-text from-[#38bdf8] to-[#4ade80] bg-gradient-to-r inline-block">
           About me
         </h1>
@@ -107,7 +106,7 @@ export default function Me() {
             and I thrive in globally-remote teams that value people and embrace trust,
             kindness, and inclusion.
           </p>
-          <section className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-2.5">
             <h2 className="font-bold text-base">Let&apos;s connect!</h2>
             <p>
               Feel free to contact me by email at{" "}
@@ -124,11 +123,11 @@ export default function Me() {
               <LinkedinLink />
               <GithubLink />
             </div>
-          </section>
+          </div>
         </div>
       </section>
-      <section className="container mt-8 flex flex-col gap-5">
-        <h2 className="text-2xl font-bold text-transparent bg-clip-text from-[#38bdf8] to-[#4ade80] bg-gradient-to-r inline-block">
+      <section className="flex flex-col gap-5">
+        <h2 className="text-2xl font-bold self-start text-transparent bg-clip-text from-[#4ade80] to-[#38bdf8] bg-gradient-to-r">
           Skills
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -147,9 +146,11 @@ export default function Me() {
           <Badge Icon={GitIcon}>Git</Badge>
         </div>
       </section>
-      <section className="container mt-8">
+      <section className="flex gap-6 flex-col">
         <div className="flex items-center justify-between">
-          <Heading level="h2">Experience</Heading>
+          <h2 className="text-2xl font-bold text-transparent bg-clip-text from-[#38bdf8] to-[#88a4e6] bg-gradient-to-r">
+            Experience
+          </h2>
           <ResumeButton />
         </div>
         <ol>
